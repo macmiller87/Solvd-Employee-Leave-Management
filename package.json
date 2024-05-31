@@ -1,0 +1,17 @@
+{
+  "name": "Solvd-Employee-Leave-Management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/macmiller87/Solvd-Employee-Leave-Management.git",
+  "author": "macmiller87 <macamagolf@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "dev:debug": "node --inspect src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
