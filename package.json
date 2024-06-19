@@ -1,17 +1,19 @@
 {
   "name": "Solvd-Employee-Leave-Management",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/macmiller87/Solvd-Employee-Leave-Management.git",
   "author": "macmiller87 <macamagolf@gmail.com>",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/server.js",
-    "dev:debug": "node --inspect src/server.js"
+    "dev": "node --watch --env-file=.env src/server.js",
+    "dev:debug": "node --inspect --env-file=.env src/server.js",
+    "create:tables:deploy": "node --env-file=.env src/database/tables/createTablesDeploy.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "postgres": "^3.4.4"
   }
 }

@@ -1,0 +1,58 @@
+import postgresSql from "../service/postgService.js";
+
+await postgresSql`
+
+    CREATE TABLE "boss" (
+        "boss_id" TEXT NOT NULL PRIMARY KEY,
+        "name" TEXT NOT NULL UNIQUE,
+        "password" TEXT NOT NULL,
+        "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+
+`.then(() => console.log("Table Boss was created !"));
+
+await postgresSql`
+
+    CREATE TABLE "bosstoken" (
+        "boss_id" TEXT NOT NULL,
+        "token_id" TEXT NOT NULL PRIMARY KEY,
+        "token" TEXT NOT NULL,
+        "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+        CONSTRAINT "bosstoken_boss_id_fkey" FOREIGN KEY("boss_id") REFERENCES "boss"("boss_id") ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+
+`.then(() => console.log("Table BossToken was created !"));
+
+await postgresSql`
+
+    CREATE TABLE "employee" (
+        "boss_id" TEXT NOT NULL,
+        "employeename" TEXT NOT NULL UNIQUE,
+        "jobtitle" TEXT NOT NULL,
+        "basesalary" REAL NOT NULL,
+        "startdate" TEXT NOT NULL,
+        "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+        CONSTRAINT "employee_boss_id_fkey" FOREIGN KEY("boss_id") REFERENCES "boss"("boss_id") ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+`.then(() => console.log("Table Employee was created !"));
+
+await postgresSql`
+
+    CREATE TABLE "vacation" (
+        "Vacation_id" TEXT NOT NULL PRIMARY KEY,
+        "employee_id" TEXT NOT NULL,
+        "employee_name" TEXT NOT NULL UNIQUE,
+        "employee_jobtitle" TEXT NOT NULL,
+        "qtty_paid_vacation" INT NOT NULL,
+        "value_to_recieve" REAL NOT NULL,
+        "days_to_see" INT NOT NULL,
+        "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+        CONSTRAINT "vacation_employee_id_fkey" FOREIGN KEY("employee_id") REFERENCES "employee"("employee_id") ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+`.then(() => console.log("Table Vacation was created !"));
