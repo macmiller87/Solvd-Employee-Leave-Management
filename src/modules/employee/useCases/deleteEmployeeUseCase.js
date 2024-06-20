@@ -1,5 +1,6 @@
 import { EnsureUserAuthenticate } from "../../../auth/EnsureBossAuthenticate.js";
 import { EmployeeRepository } from "../repository/employeeRepository.js";
+import { AppError } from "../../../error/appError.js";
 import { Router } from "express";
 
 export const deleteEmployeeRouter = Router();
@@ -13,7 +14,7 @@ deleteEmployeeRouter.delete("/deleteEmployee", async (request, response) => {
     const findEmployeeById = await employeeRepository.findEmployeeById(employee_id);
 
     if(findEmployeeById === false) {
-        return response.status(404).json({ message: "Employee Not Found !" });
+        throw new AppError("Employee Not Found !", 404);
     }
 
     const checkAuth = await EnsureUserAuthenticate(request, response);

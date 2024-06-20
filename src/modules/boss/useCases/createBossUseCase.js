@@ -1,4 +1,5 @@
 import { BossRepository } from "../repository/bossRepository.js"
+import { AppError } from "../../../error/appError.js";
 import { Router } from "express";
 import pkg from 'bcryptjs';
 const { hash } = pkg;
@@ -12,17 +13,17 @@ createBossRouter.post("/createBoss",  async (request, response) => {
     const { name, password } = request.body;
 
     if(name === "" || password === "") {
-        return response.status(401).json({ message: "Null Data is Not Allowed, Please fill in All Datas !" });
+        throw new AppError("Null Data is Not Allowed, Please fill in All Datas !", 401);
 
     }else if(typeof(name) !== "string" || typeof(password) !== "string") {
-        return response.status(401).json({ message: "The filed's, must to be a string !" });
+        throw new AppError("The field's, must to be a string !", 401);
 
     }else {
 
         const findBossByName = await bossRepository.findBossByName(name);
 
         if(findBossByName === true) {
-            return response.status(401).json({ message: "The bossName already exists !" });
+            throw new AppError("The bossName already exists !", 401);
         }
 
         const passwordHash = await hash(password, 8);

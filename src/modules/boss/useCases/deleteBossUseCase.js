@@ -1,4 +1,5 @@
 import { BossRepository } from "../repository/bossRepository.js";
+import { AppError } from "../../../error/appError.js";
 import { Router } from "express";
 
 export const deleteBossRouter = Router();
@@ -12,7 +13,7 @@ deleteBossRouter.delete("/deleteBoss", async (request, response) => {
     const findBossById = await bossRepository.findBossById(boss_id);
 
     if(findBossById === false) {
-        return response.status(404).json({ message: "Boss_id not found, or Incorrect !" });
+        throw new AppError("Boss_id not found, or Incorrect !", 404);
     }
 
     await bossRepository.deleteBossById(boss_id);

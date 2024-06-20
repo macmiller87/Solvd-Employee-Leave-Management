@@ -1,6 +1,7 @@
 import { BossRepository } from "../repository/bossRepository.js";
 import { authConfig } from "../../../auth/authConfig.js";
 import { BossTokenRepository } from "../repository/bossTokenRepository.js";
+import { AppError } from "../../../error/appError.js";
 import { Router } from "express";
 import signn from 'jsonwebtoken';
 const { sign } = signn;
@@ -18,23 +19,23 @@ createBossTokenRouter.post("/createToken", async (request, response) => {
     const { name, password } = request.body;
 
     if(name === "" || password === "") {
-        return response.status(401).json({ message: "Null Data is Not Allowed, Please fill in All Datas !" });
+        throw new AppError("Null Data is Not Allowed, Please fill in All Datas !", 401);
 
     }else if(typeof(name) !== "string" || typeof(password) !== "string") {
-        return response.status(401).json({ message: "The field's, must to be a string !" });
+       throw new AppError("The field's, must to be a string !", 401);
 
     }else {
 
         const findBossById = await bossRepository.findBossById(boss_id);
 
         if(findBossById === false) {
-            return response.status(404).json({ message: "Boss_id not found, or Incorrect !" });
+            throw new AppError("Boss_id not found, or Incorrect !", 404);
         }
 
         const findBossByName = await bossRepository.findBossByName(name);
 
         if(findBossByName === false) {
-            return response.status(404).json({ message: "BossName not found, or Incorrect !" });
+            throw new AppError("BossName not found, or Incorrect !", 404);
         }
 
         const getBossPassword = await bossRepository.getBossPassword(boss_id);
@@ -42,7 +43,7 @@ createBossTokenRouter.post("/createToken", async (request, response) => {
         const passwordMatch = await compare(password, getBossPassword);
 
         if(!passwordMatch) {
-            return response.status(404).json({ message: "Incorrect password !" });
+            throw new AppError("Incorrect password !", 401);
         }
 
         const { secret_Token, expiresIn } = authConfig.jwt;

@@ -6,6 +6,9 @@ const postgresSql = postgres({
     database: process.env.POSTGRES_DATABASE ?? process.env.PGDATABASE_DEPLOY,
     username: process.env.POSTGRES_USER ?? process.env.PGUSER_DEPLOY,
     password: process.env.POSTGRES_PASSWORD ?? process.env.PGPASSWORD_DEPLOY,
+    // connection: {
+    //     options: `project=${ process.env.PGENDPOINT_ID_DEPLOY }`
+    // },
     ssl: "require"
 });
 

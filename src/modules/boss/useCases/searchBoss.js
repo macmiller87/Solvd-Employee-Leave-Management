@@ -12,7 +12,7 @@ searchBossRouter.get("/searchBoss", async (request, response) => {
     const findBossById = await bossRepository.findBossById(boss_id);
 
     if(findBossById === false) {
-        return response.status(404).json({ message: "Boss_id not found, or Incorrect !" });
+        throw new AppError("Boss_id not found, or Incorrect !", 404);
     }
 
     const searchBoss = await bossRepository.getBossById(boss_id);

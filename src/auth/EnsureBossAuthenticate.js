@@ -1,4 +1,5 @@
 import { authConfig } from "./authConfig.js";
+import { AppError } from "../error/appError.js";
 import pkg from 'jsonwebtoken';
 const { verify } = pkg;
 
@@ -18,11 +19,11 @@ export async function EnsureUserAuthenticate(request, response) {
     }catch(error) {
 
         if(error.message === "jwt malformed") {
-            response.status(401).json({ message: "Token Not found !" });
+            throw new AppError("Token Not found !", 404);
         }
 
         if(error.message === "invalid signature") {
-            response.status(401).json({ message: "Token incorrect !" });
+            throw new AppError("Token incorrect !", 401);
         }
 
     }

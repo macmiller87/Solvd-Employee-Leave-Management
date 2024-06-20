@@ -1,6 +1,7 @@
 import { EmployeeRepository  } from "../repository/employeeRepository.js";
 import { BossRepository } from "../../boss/repository/bossRepository.js";
 import { EnsureUserAuthenticate } from "../../../auth/EnsureBossAuthenticate.js";
+import { AppError } from "../../../error/appError.js";
 import { Router } from "express";
 
 export const createEmployeeRouter = Router();
@@ -14,26 +15,26 @@ createEmployeeRouter.post("/createEmployee", async (request, response) => {
     const { employeeName, jobTitle, baseSalary, startDate } = request.body;
 
     if(employeeName === "" || jobTitle === "" || baseSalary === "" || startDate === "") {
-        return response.status(401).json({ message: "Null Data is Not Allowed, Please fill in All Datas !" });
+        throw new AppError("Null Data is Not Allowed, Please fill in All Datas !", 401);
 
     }else if(typeof(employeeName) !== "string" ||  typeof(jobTitle) !== "string" ||typeof(startDate) !== "string") {
-        return response.status(401).json({ message: "The fields, must to be a string !" });
+        throw new AppError("The fields, must to be a string !", 401);
 
     }else if(typeof(baseSalary) !== "number") {
-        return response.status(401).json({ message: "The baseSalary field , must to be a number int or float !" });
+        throw new AppError("The baseSalary field , must to be a number int or float !", 401);
 
     }else {
 
         const employee = await employeeRepository.findEmployeeByName(employeeName);
 
         if(employee === true) {
-            return response.status(401).json({ message: "The employeeName already exists !" });
+            throw new AppError("The employeeName already exists !", 401);
         }
 
         const boss = await bossRepository.findBossById(boss_id);
 
         if(boss === false) {
-            return response.status(404).json({ message: "Boss ID Not Found !" });
+            throw new AppError("Boss ID Not Found !", 404);
         }
 
         const checkAuth = await EnsureUserAuthenticate(request, response);
