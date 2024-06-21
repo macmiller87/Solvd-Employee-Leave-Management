@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
 import "express-async-errors";
+import { AppError } from "./error/appError.js";
 import { bossRoutes } from "./routes/boss.routes.js";
 import { employeeRoutes } from "./routes/employee.routes.js";
-import { AppError } from "./error/appError.js";
+import { vacationRoutes } from "./routes/vacation.routes.js";
 
 export const app = express();
 
@@ -12,6 +13,7 @@ app.use(cors());
 
 app.use(bossRoutes);
 app.use(employeeRoutes);
+app.use(vacationRoutes);
 
 app.use((error, request, response, next) => {
 

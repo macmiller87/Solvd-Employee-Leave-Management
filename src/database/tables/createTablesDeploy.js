@@ -43,13 +43,14 @@ await postgresSql`
 await postgresSql`
 
     CREATE TABLE "vacation" (
-        "Vacation_id" TEXT NOT NULL PRIMARY KEY,
+        "vacation_id" TEXT NOT NULL PRIMARY KEY,
         "employee_id" TEXT NOT NULL,
         "employee_name" TEXT NOT NULL UNIQUE,
         "employee_jobtitle" TEXT NOT NULL,
         "qtty_paid_vacation" INT NOT NULL,
+        "qtty_days_on_vacation" INT NOT NULL,
         "value_to_recieve" REAL NOT NULL,
-        "days_to_see" INT NOT NULL,
+        "time_worked_amount" TEXT NOT NULL,
         "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
         CONSTRAINT "vacation_employee_id_fkey" FOREIGN KEY("employee_id") REFERENCES "employee"("employee_id") ON DELETE CASCADE ON UPDATE CASCADE

@@ -7,7 +7,17 @@ export class EmployeeRepository  {
         const userId = randomUUID();
         const { boss_id, employeeName, jobTitle, baseSalary, startDate } = datas;
 
-        const insert = await postgresSql`INSERT INTO employee(boss_id, employee_id, employeename, jobtitle, basesalary, startdate) VALUES(${boss_id}, ${userId}, ${employeeName}, ${jobTitle}, ${baseSalary}, ${startDate}) RETURNING *`;
+        const date = new Date(startDate);
+
+        const dateOptions =  {
+            month: "numeric",
+            day: "numeric",
+            year: "numeric"
+        }
+        
+        const normalizeDate = date.toLocaleDateString(process.env.LOCALE, dateOptions);
+
+        const insert = await postgresSql`INSERT INTO employee(boss_id, employee_id, employeename, jobtitle, basesalary, startdate) VALUES(${boss_id}, ${userId}, ${employeeName}, ${jobTitle}, ${baseSalary}, ${normalizeDate}) RETURNING *`;
 
         return insert;
     }
@@ -23,6 +33,13 @@ export class EmployeeRepository  {
         const find = await postgresSql`SELECT employee_id FROM employee WHERE employee_id = ${employee_id}`;
         
         const queryResult = find.count === 1 ? true : false;
+        return queryResult;
+    }
+
+    async findAllEmployeeInformationsById(employee_id) {
+        const find = await postgresSql`SELECT * FROM employee WHERE employee_id = ${employee_id}`;
+        
+        const queryResult = find.count === 1 ? find : false;
         return queryResult;
     }
 

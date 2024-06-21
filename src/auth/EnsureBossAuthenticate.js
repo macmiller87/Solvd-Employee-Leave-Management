@@ -26,5 +26,9 @@ export async function EnsureUserAuthenticate(request, response) {
             throw new AppError("Token incorrect !", 401);
         }
 
+        if(error.message === "jwt expired") {
+            throw new AppError("Token expired !", 401);
+        }
+
     }
 }
