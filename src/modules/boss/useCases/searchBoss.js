@@ -1,4 +1,5 @@
 import { BossRepository } from "../repository/bossRepository.js";
+import { AppError } from "../../../error/appError.js"
 import { Router } from "express";
 
 export const searchBossRouter = Router();

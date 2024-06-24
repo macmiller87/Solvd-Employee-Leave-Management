@@ -1,0 +1,249 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Solvd-Employee-Leave-Management",
+        "description": "This is an Api Solvd-Employee-Leave-Management",
+        "version": "1.0.0",
+        "contact": {
+            "email": "macamagolf@gmail.com"
+        }
+    },
+    "paths": {
+        "/createBoss": {
+            "post": {
+                "tags": ["Boss"],
+                "summary": "Create a Boss",
+                "description": "Create a Boss",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "description": "Mandatory fields for create a Boss",
+                                "example": {
+                                    "name": "boss name",
+                                    "password": "boss password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "boss_id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "boss": {
+                                        "boss_id": "11264226-ebc8-4148-9f24-b0a1769c17b9",
+		                                "name": "Boss name",
+		                                "createdAt": "2024-06-21T21:57:20.862Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Null Data is Not Allowed, Please fill in All Datas !"
+                    },
+                    "401": {
+                        "description": "The bossName already exists !"
+                    },
+                    "405": {
+                        "description": "The field's, must to be a string !"
+                    }
+                }
+            }
+        },
+        "/createToken": {
+            "post": {
+                "tags": ["Boss"],
+                "summary": "Create Token",
+                "description": "Create Boss Token",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "boss_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "description": "Mandatory fields for create a Boss Token",
+                                "example": {
+                                    "name": "boss name",
+                                    "password": "boss password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "boss_id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "token": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "boss": {
+                                        "boss_id": "11264226-ebc8-4148-9f24-b0a1769c17b9",
+		                                "name": "Boss name",
+		                                "createdAt": "2024-06-21T21:57:20.862Z"
+                                    },
+                                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOiI3NTk3YmExZC02ODliLTQyOTMtYTc2ZS00NmU2ODRiMGQyZWMiLCJ1c2VybmFtZSI6IlNldSBNYWRydWdhIiwidXNlckF2YXRhciI6Ik1hZHJ1Z3VpyZWMiLCJ1c2VybmFtZSI6IlNldSBNYWRydWdhIiwidXNlckF2YXRhciI6Ik1hZHJ1Z3VpyZWMiLCJ1c2VybmFtZSI6IlNldSBNYWRydWdhIiwidXNlckF2YXRhciI6Ik1hZHJ1Z3VpyZWMiLCJ1c2VybmFtZSI6IlNldSBNYWRy"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Null Data is Not Allowed, Please fill in All Datas !"
+                    },
+                    "401": {
+                        "description": "Incorrect password !"
+                    },
+                    "404": {
+                        "description": "Boss_id not found, or Incorrect ! (OR) BossName not found, or Incorrect !"
+                    },
+                    "405": {
+                        "description": "The field's, must to be a string !"
+                    }
+                }
+            }
+        },
+        "/searchBoss": {
+            "get": {
+                "tags": ["Boss"],
+                "summary": "Search Boss",
+                "description": "Search Boss",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "boss_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "boss_id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "boss": {
+                                        "boss_id": "11264226-ebc8-4148-9f24-b0a1769c17b9",
+		                                "name": "Boss name",
+		                                "createdAt": "2024-06-21T21:57:20.862Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description":"Boss_id not found, or Incorrect !"
+                    }
+                }
+            }
+        },
+        "/deleteBoss": {
+            "delete": {
+                "tags": ["Boss"],
+                "summary": "Delete Boss",
+                "description": "Delete Boss",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "boss_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Boss deleted with success !"
+                    },
+                    "404": {
+                        "description": "Boss_id not found, or Incorrect !"
+                    }
+                }
+            }
+        }
+    }
+}

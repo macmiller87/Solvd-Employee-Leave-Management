@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import "express-async-errors";
+import swaggerUi  from "swagger-ui-express";
+import swaggerFile  from "./swagger.json" assert { type: "json" };
 import { AppError } from "./error/appError.js";
 import { bossRoutes } from "./routes/boss.routes.js";
 import { employeeRoutes } from "./routes/employee.routes.js";
@@ -14,6 +16,8 @@ app.use(cors());
 app.use(bossRoutes);
 app.use(employeeRoutes);
 app.use(vacationRoutes);
+
+app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use((error, request, response, next) => {
 

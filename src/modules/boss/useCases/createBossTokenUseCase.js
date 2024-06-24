@@ -19,10 +19,10 @@ createBossTokenRouter.post("/createToken", async (request, response) => {
     const { name, password } = request.body;
 
     if(name === "" || password === "") {
-        throw new AppError("Null Data is Not Allowed, Please fill in All Datas !", 401);
+        throw new AppError("Null Data is Not Allowed, Please fill in All Datas !", 400);
 
     }else if(typeof(name) !== "string" || typeof(password) !== "string") {
-       throw new AppError("The field's, must to be a string !", 401);
+       throw new AppError("The field's, must to be a string !", 405);
 
     }else {
 
