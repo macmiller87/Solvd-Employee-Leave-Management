@@ -42,18 +42,16 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "boss_id": {
-                                                "type": "string"
-                                            },
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "createdAt": {
-                                                "type": "string"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "boss_id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
                                         }
                                     }
                                 },
@@ -123,21 +121,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "boss_id": {
-                                                "type": "string"
-                                            },
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "createdAt": {
-                                                "type": "string"
-                                            },
-                                            "token": {
-                                                "type": "string"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "boss_id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        },
+                                        "token": {
+                                            "type": "string"
                                         }
                                     }
                                 },
@@ -188,19 +184,17 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "boss_id": {
-                                                "type": "string"
-                                            },
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "createdAt": {
-                                                "type": "string"
+                                    "type": "object",
+                                    "properties": {
+                                        "boss_id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
                                             }
-                                        }
                                     }
                                 },
                                 "example": {
@@ -243,6 +237,228 @@
                         "description": "Boss_id not found, or Incorrect !"
                     }
                 }
+            }
+        },
+        "/createEmployee": {
+            "post": {
+                "tags": ["Employee"],
+                "summary": "Create a Employee",
+                "description": "Create a Employee",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "boss_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "employeeName": {
+                                        "type": "string"
+                                    },
+                                    "jobTitle": {
+                                        "type": "string"
+                                    },
+                                    "baseSalary": {
+                                        "type": "number"
+                                    },
+                                    "startDate": {
+                                        "type": "string"
+                                    }
+                                },
+                                "description": "Mandatory fields for create a Employee",
+                                "example": {
+                                    "employeeName": "Employee name",
+                                    "jobTitle": "Employee jobTitle",
+                                    "baseSalary": 0,
+                                    "startDate": "Employee startDate"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "boss_id": {
+                                            "type": "string"
+                                        },
+                                        "employee_id": {
+                                            "type": "string"
+                                        },
+                                        "employeeName": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "baseSalary": {
+                                            "type": "number"
+                                        },
+                                        "startDate": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "employee": {
+		                                "boss_id": "0849d791-731d-4a93-9a42-c2e68cfb4e40",
+		                                "employee_id": "7976abab-9358-42ba-b017-32019b6c6024",
+		                                "employeeName": "Employee name",
+		                                "jobTitle": "Employee jobTitle",
+		                                "baseSalary": 100.00,
+		                                "startDate": "Employee startDate",
+		                                "createdAt": "2024-06-25T18:15:11.022Z"
+	                                }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Null Data is Not Allowed, Please fill in All Datas !"
+                    },
+                    "401": {
+                        "description": "The employeeName already exists ! (OR) Token incorrect ! (OR) Token expired, please authenticate again !"
+                    },
+                    "404": {
+                        "description": "Boss ID Not Found ! (OR) Token Not found !"
+                    },
+                    "405": {
+                        "description": "The field's, must to be a string ! (OR) The baseSalary field , must to be a number int or float !"
+                    }
+                }
+            }
+        },
+        "/searchEmployee": {
+            "get": {
+                "tags": ["Employee"],
+                "summary": "Search Employee",
+                "description": "Search Employee",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "employee_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "boss_id": {
+                                            "type": "string"
+                                        },
+                                        "employee_id": {
+                                            "type": "string"
+                                        },
+                                        "employeeName": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "baseSalary": {
+                                            "type": "number"
+                                        },
+                                        "startDate": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "employee": {
+		                                "boss_id": "0849d791-731d-4a93-9a42-c2e68cfb4e40",
+		                                "employee_id": "7976abab-9358-42ba-b017-32019b6c6024",
+		                                "employeeName": "Employee name",
+		                                "jobTitle": "Employee jobTitle",
+		                                "baseSalary": 100.00,
+		                                "startDate": "Employee startDate",
+		                                "createdAt": "2024-06-25T18:15:11.022Z"
+	                                }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Token incorrect ! (OR) Token expired, please authenticate again !"
+                    },
+                    "404": {
+                        "description": "Employee Not Found ! (OR) Token Not found !"
+                    }
+                }
+            }
+        },
+        "/deleteEmployee": {
+            "delete": {
+                "tags": ["Employee"],
+                "summary": "Delete Employee",
+                "description": "Delete Employee",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "employee_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee deleted with success !"
+                    },
+                    "401": {
+                        "description": "Token incorrect ! (OR) Token expired, please authenticate again !"
+                    },
+                    "404": {
+                        "description": "Employee Not Found ! (OR) Token Not found !"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
             }
         }
     }

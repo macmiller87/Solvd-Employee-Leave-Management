@@ -7,7 +7,27 @@ export class EmployeeRepository  {
         const userId = randomUUID();
         const { boss_id, employeeName, jobTitle, baseSalary, startDate } = datas;
 
-        const date = new Date(startDate);
+        const splitDate = startDate.split("/");
+
+        const arrDate = [];
+
+        for(let index = 0; index < splitDate.length; index++) {
+            
+            if(index === 0) {
+                arrDate.push(Math.abs(splitDate[index]).toString());
+            }else if(index === 1) {
+                arrDate.push(Math.abs(splitDate[index]).toString());
+            }else {
+                arrDate.push(Math.abs(splitDate[index]).toString());
+            }
+
+        }
+
+        const aux = arrDate.toString();
+
+        const joinDate = aux.split(",").join("/");
+
+        const date = new Date(joinDate);
 
         const dateOptions =  {
             month: "numeric",

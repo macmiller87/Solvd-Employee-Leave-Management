@@ -27,6 +27,7 @@ searchEmployeeRouter.get("/searchEmployee", async (request, response) => {
             employee: {
                 boss_id: getEmployee[0].boss_id,
                 employee_id: getEmployee[0].employee_id,
+                employeeName: getEmployee[0].employeename,
                 jobTitle: getEmployee[0].jobtitle,
                 baseSalary: getEmployee[0].basesalary,
                 startDate: getEmployee[0].startdate,
