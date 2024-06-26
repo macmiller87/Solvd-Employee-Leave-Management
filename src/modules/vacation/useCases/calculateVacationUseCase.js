@@ -23,7 +23,7 @@ calculteEmployeeVacationRoute.post("/calculateVacation", async (request, respons
     const checkEmployeeName = await vacationRepository.findEmployeeByName(searchEmployee[0].employeename);
 
     if(checkEmployeeName === true) {
-        throw new AppError("You can only calculate 1 vacation for each employee", 401);
+        throw new AppError("You can only calculate 1 vacation for each employee !", 401);
     }
 
     const checkAuth = await EnsureUserAuthenticate(request, response);

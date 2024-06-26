@@ -33,4 +33,8 @@ export class VacationRepository {
         return queryResult;
     }
 
+    async deleteVacation(vacation_id) {
+        await postgresSql`DELETE FROM vacation WHERE vacation_id = ${vacation_id}`;
+    }
+
 }

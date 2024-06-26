@@ -451,6 +451,234 @@
                     }
                 }
             }
+        },
+        "/calculateVacation": {
+            "post": {
+                "tags": ["Vacation"],
+                "summary": "Calculate Employee Vacation",
+                "description": "Calculate Employee Vacation",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "employee_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "boss_id": {
+                                            "type": "string"
+                                        },
+                                        "employee_id": {
+                                            "type": "string"
+                                        },
+                                        "employeeName": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "baseSalary": {
+                                            "type": "number"
+                                        },
+                                        "startDate": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        },
+                                        "vacation": {
+                                            "vacation_id": {
+                                                "type": "string"
+                                            },
+                                            "employee_id": {
+                                                "type": "string"
+                                            },
+                                            "employeeName": {
+                                                "type": "string"
+                                            },
+                                            "jobTitle": {
+                                                "type": "string"
+                                            },
+                                            "qtty_paid_vacation": {
+                                                "type": "number"
+                                            },
+                                            "qtty_days_on_vacation": {
+                                                "type": "number"
+                                            },
+                                            "value_to_recieve": {
+                                                "type": "number"
+                                            },
+                                            "time_worked_amount": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "employee": {
+		                                "boss_id": "0849d791-731d-4a93-9a42-c2e68cfb4e40",
+		                                "employee_id": "7976abab-9358-42ba-b017-32019b6c6024",
+		                                "employeeName": "Employee name",
+		                                "jobTitle": "Employee jobTitle",
+		                                "baseSalary": 100.00,
+		                                "startDate": "Employee startDate",
+		                                "createdAt": "2024-06-25T18:15:11.022Z",
+                                        "vacation": [
+                                            {
+                                                "vacation_id": "42650385-1635-4948-998a-cdd9fe019088",
+					                            "employee_id": "7976abab-9358-42ba-b017-32019b6c6024",
+					                            "employee_name": "Employee name",
+					                            "employee_jobtitle": "Employee jobTitle",
+					                            "qtty_paid_vacation": 0,
+					                            "qtty_days_on_vacation": 0,
+					                            "value_to_recieve": 0,
+					                            "time_worked_amount": "Working time: ? months, ? days, and ? years ..",
+					                            "createdAt": "2024-06-25T18:16:44.499Z"
+                                            }
+                                        ]
+	                                }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "You can only calculate 1 vacation for each employee ! (OR) Token incorrect ! (OR) Token expired, please authenticate again !"
+                    },
+                    "404": {
+                        "description": "Employee Not Found ! (OR) Token Not found !"
+                    }
+                }
+            }
+        },
+        "/searchVacation": {
+            "get": {
+                "tags": ["Vacation"],
+                "summary": "Search Employee Vacation",
+                "description": "Search Employee Vacation",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "vacation_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "vacation_id": {
+                                            "type": "string"
+                                        },
+                                        "employee_id": {
+                                            "type": "string"
+                                        },
+                                        "employeeName": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "qtty_paid_vacation": {
+                                            "type": "number"
+                                        },
+                                        "qtty_days_on_vacation": {
+                                            "type": "number"
+                                        },
+                                        "value_to_recieve": {
+                                            "type": "number"
+                                        },
+                                        "time_worked_amount": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "vacation": [
+                                        {
+                                            "vacation_id": "42650385-1635-4948-998a-cdd9fe019088",
+                                            "employee_id": "7976abab-9358-42ba-b017-32019b6c6024",
+                                            "employee_name": "Employee name",
+                                            "employee_jobtitle": "Employee jobTitle",
+                                            "qtty_paid_vacation": 0,
+                                            "qtty_days_on_vacation": 0,
+                                            "value_to_recieve": 0,
+                                            "time_worked_amount": "Working time: ? months, ? days, and ? years ..",
+                                            "createdAt": "2024-06-25T18:16:44.499Z"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Token incorrect ! (OR) Token expired, please authenticate again !"
+                    },
+                    "404": {
+                        "description": "Vacation not found ! (OR) Token Not found !"
+                    }
+                }
+            }
+        },
+        "/deleteVacation": {
+            "delete": {
+                "tags": ["Vacation"],
+                "summary": "Delete Employee Vacation",
+                "description": "Delete Employee Vacation",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "vacation_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Vacation deleted with success !"
+                    },
+                    "401": {
+                        "description": "Token incorrect ! (OR) Token expired, please authenticate again !"
+                    },
+                    "404": {
+                        "description": "Vacation not found ! (OR) Token Not found !"
+                    }
+                }
+            }
         }
     },
     "components": {
