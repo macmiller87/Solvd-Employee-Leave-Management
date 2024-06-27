@@ -62,7 +62,7 @@ calculteEmployeeVacationRoute.post("/calculateVacation", async (request, respons
             const qttyStandardVacationDays = 30;
             const qttyVacationStandardPaid = 1;
             
-            const timeWorkedAmount = `Working time: ${checkAndCalcMonth} months, ${checkAndCalcDays} days, and ${checkAndCalcYears} year (s) ..`;
+            const timeWorkedAmount = `Time calculated based on today's date .... Working time: ${checkAndCalcMonth} months, ${checkAndCalcDays} days, and ${checkAndCalcYears} year (s) ..`;
 
             const calcPercentVacation = employeeBaseSalary / 3;
             const vacationValue = employeeBaseSalary + calcPercentVacation;
@@ -81,6 +81,7 @@ calculteEmployeeVacationRoute.post("/calculateVacation", async (request, respons
                 employee: {
                     boss_id: searchEmployee[0].boss_id,
                     employee_id: searchEmployee[0].employee_id,
+                    employeeName: searchEmployee[0].employeename,
                     jobTitle: searchEmployee[0].jobtitle,
                     baseSalary: searchEmployee[0].basesalary,
                     startDate: searchEmployee[0].startdate,
@@ -94,28 +95,29 @@ calculteEmployeeVacationRoute.post("/calculateVacation", async (request, respons
             const qttyStandardVacationDays = 0;
             const qttyVacationStandardPaid = 0;
 
-            const timeWorkedAmount = `Working time: ${checkAndCalcMonth} months, ${checkAndCalcDays} days, and ${checkAndCalcYears} years ..`;
+            const timeWorkedAmount = `Time calculated based on today's date ... Working time: ${checkAndCalcMonth} months, ${checkAndCalcDays} days, and ${checkAndCalcYears} years ..`;
 
-            const createVacation = await vacationRepository.insert({
-                employee_id,
-                employeeName: searchEmployee[0].employeename,
-                employeeJobTitle: searchEmployee[0].jobtitle,
-                qttyPaidVacation: qttyVacationStandardPaid,
-                qttyDaysOnVacation: qttyStandardVacationDays,
-                valueToRecieve: 0,
-                timeWorkedAmount: timeWorkedAmount
-            });
+            return response.status(200).json({
+                info: {
+                    message: `You don't have enough company time to take and calculate vacations !`
+                },
 
-            return response.status(201).json({
                 employee: {
                     boss_id: searchEmployee[0].boss_id,
                     employee_id: searchEmployee[0].employee_id,
+                    employeeName: searchEmployee[0].employeename,
                     jobTitle: searchEmployee[0].jobtitle,
                     baseSalary: searchEmployee[0].basesalary,
                     startDate: searchEmployee[0].startdate,
                     createdAt: searchEmployee[0].createdAt,
-                    vacation: [createVacation]
+                },
+                vacation: {
+                    qttyPaidVacation: qttyVacationStandardPaid,
+                    qttyDaysOnVacation: qttyStandardVacationDays,
+                    valueToRecieve: 0,
+                    timeWorkedAmount: timeWorkedAmount
                 }
+                
             });
             
         }

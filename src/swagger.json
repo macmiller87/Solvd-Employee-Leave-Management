@@ -472,6 +472,71 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "boss_id": {
+                                            "type": "string"
+                                        },
+                                        "employee_id": {
+                                            "type": "string"
+                                        },
+                                        "employeeName": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "baseSalary": {
+                                            "type": "number"
+                                        },
+                                        "startDate": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        },
+                                        "vacation": {
+                                            "qtty_paid_vacation": {
+                                                "type": "number"
+                                            },
+                                            "qtty_days_on_vacation": {
+                                                "type": "number"
+                                            },
+                                            "value_to_recieve": {
+                                                "type": "number"
+                                            },
+                                            "time_worked_amount": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "employee": {
+		                                "boss_id": "0849d791-731d-4a93-9a42-c2e68cfb4e40",
+		                                "employee_id": "7976abab-9358-42ba-b017-32019b6c6024",
+		                                "employeeName": "Employee name",
+		                                "jobTitle": "Employee jobTitle",
+		                                "baseSalary": 100.00,
+		                                "startDate": "Employee startDate",
+		                                "createdAt": "2024-06-25T18:15:11.022Z",
+                                        "vacation": [
+                                            {
+					                            "qtty_paid_vacation": 0,
+					                            "qtty_days_on_vacation": 0,
+					                            "value_to_recieve": 0,
+					                            "time_worked_amount": "Time calculated based on today's date ... Working time: ? months, ? days, and ? years .."
+                                            }
+                                        ]
+	                                }
+                                }
+                            }
+                        }
+                    },
                     "201": {
                         "content": {
                             "application/json": {
@@ -548,7 +613,7 @@
 					                            "qtty_paid_vacation": 0,
 					                            "qtty_days_on_vacation": 0,
 					                            "value_to_recieve": 0,
-					                            "time_worked_amount": "Working time: ? months, ? days, and ? years ..",
+					                            "time_worked_amount": "Time calculated based on today's date ... Working time: ? months, ? days, and ? years ..",
 					                            "createdAt": "2024-06-25T18:16:44.499Z"
                                             }
                                         ]
