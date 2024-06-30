@@ -1,23 +1,13 @@
 import postgres from 'postgres'; 
 
+const setHost = process.env.POSTGRES_HOST_LOCAL ?? process.env.POSTGRES_HOST_DOCKER;
+
 const postgresSql = postgres({
-    host: process.env.POSTGRES_HOST ?? process.env.PGHOST_DEPLOY,
+    host: setHost,
     port: process.env.POSTGRES_PORT,
-    database: process.env.POSTGRES_DATABASE ?? process.env.PGDATABASE_DEPLOY,
-    username: process.env.POSTGRES_USER ?? process.env.PGUSER_DEPLOY,
-    password: process.env.POSTGRES_PASSWORD ?? process.env.PGPASSWORD_DEPLOY,
-    // connection: {
-    //     options: `project=${ process.env.PGENDPOINT_ID_DEPLOY }`
-    // },
-    ssl: "require"
+    database: setHost === "localhost" ? process.env.POSTGRES_DATABASE_LOCAL : process.env.POSTGRES_DATABASE_DOCKER,
+    username: setHost === "localhost" ? process.env.POSTGRES_USER_LOCAL : process.env.POSTGRES_USER_DOCKER,
+    password: setHost === "localhost" ? process.env.POSTGRES_PASSWORD_LOCAL : process.env.POSTGRES_PASSWORD_DOCKER
 });
-
-async function getPostgresVersion() {
-
-    const result = await postgresSql `SELECT VERSION()`;
-    console.log(result);
-}
-  
-getPostgresVersion();
 
 export default postgresSql;
