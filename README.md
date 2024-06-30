@@ -25,6 +25,7 @@
 - Postgres 
 - Express
 - JsonWebToken
+- Docker
 - Swagger
 
 ### Base URL
