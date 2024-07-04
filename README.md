@@ -28,6 +28,12 @@
 - Docker
 - Swagger
 
+### 💻 Tables Diagram
+
+<p align="center">
+    <img src="src/database/tables/Solvd_Employee_Leave_Mnagement_Diagram.png" alt="demonstration"/>
+</p>
+
 ### Base URL
 
 `http://localhost:8080`
