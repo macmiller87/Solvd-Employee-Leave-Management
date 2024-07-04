@@ -1,10 +1,9 @@
 import { BossRepository } from "../repository/bossRepository.js";
 import { authConfig } from "../../../auth/authConfig.js";
 import { BossTokenRepository } from "../repository/bossTokenRepository.js";
+import { GenerateJWT } from "../../../auth/generateToken.js";
 import { AppError } from "../../../error/appError.js";
 import { Router } from "express";
-import signn from 'jsonwebtoken';
-const { sign } = signn;
 import pkg from 'bcryptjs';
 const { compare } = pkg;
 
@@ -12,6 +11,7 @@ export const createBossTokenRouter = Router();
 
 const bossRepository = new BossRepository();
 const bossTokenRepository = new BossTokenRepository();
+const jwtToken = new GenerateJWT();
 
 createBossTokenRouter.post("/createToken", async (request, response) => {
 
@@ -39,6 +39,7 @@ createBossTokenRouter.post("/createToken", async (request, response) => {
         }
 
         const getBossPassword = await bossRepository.getBossPassword(boss_id);
+        const searchBoss = await bossRepository.getBossById(boss_id);
 
         const passwordMatch = await compare(password, getBossPassword);
 
@@ -46,24 +47,22 @@ createBossTokenRouter.post("/createToken", async (request, response) => {
             throw new AppError("Incorrect password !", 401);
         }
 
-        const { secret_Token, expiresIn } = authConfig.jwt;
+        const payload = {
+            id: boss_id,
+            name: searchBoss[0].name 
+        }
 
-        const token = sign({ boss_id }, secret_Token, {
-            subject: boss_id,
-            expiresIn: expiresIn,
-            audience: "boss",
-            issuer: "bossLoginToken"
-        });
+        const { secret_Token } = authConfig.jwt;
+
+        const token = await jwtToken.generateJWT(payload, secret_Token);
 
         await bossTokenRepository.create(boss_id, token);
 
-        const getBossById = await bossRepository.getBossById(boss_id);
-
         return response.status(201).json({
             boss: {
-                boss_id: getBossById[0].boss_id,
-                name: getBossById[0].name,
-                createdAt: getBossById[0].createdAt
+                boss_id: searchBoss[0].boss_id,
+                name: searchBoss[0].name,
+                createdAt: searchBoss[0].createdAt
             }, 
             token: token
         });

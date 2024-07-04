@@ -18,7 +18,6 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2"
+    "bcryptjs": "^2.4.3"
   }
 }

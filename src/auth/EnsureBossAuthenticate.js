@@ -1,34 +1,23 @@
 import { authConfig } from "./authConfig.js";
 import { AppError } from "../error/appError.js";
-import pkg from 'jsonwebtoken';
-const { verify } = pkg;
+import crypto from 'node:crypto';
 
 export async function EnsureUserAuthenticate(request, response) {
 
-    try {
+    const authToken = request.headers.authorization.replace(/bearer\s/ig, '');
 
-        const authToken = request.headers.authorization.replace(/bearer\s/ig, '');
+    const [encodedHeader, encodedPayload, signature] = authToken.split('.');
 
-        verify(authToken, authConfig.jwt.secret_Token, {
-            audience: "boss",
-            issuer: "bossLoginToken"
-        });
+    const validSignature = crypto
+        .createHmac('sha256', authConfig.jwt.secret_Token)
+        .update(`${encodedHeader}.${encodedPayload}`)
+        .digest('base64url');
 
-        return true;
+    const checkSignature = signature === validSignature ? true : false;
 
-    }catch(error) {
-
-        if(error.message === "jwt malformed") {
-            throw new AppError("Token Not found !", 404);
-        }
-
-        if(error.message === "invalid signature") {
-            throw new AppError("Token incorrect !", 401);
-        }
-
-        if(error.message === "jwt expired") {
-            throw new AppError("Token expired, please authenticate again !", 401);
-        }
-
+    if(checkSignature === false) {
+        throw new AppError("Invalid Token !", 401);
     }
+
+    return checkSignature;
 }

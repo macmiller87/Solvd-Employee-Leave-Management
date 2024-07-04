@@ -337,10 +337,10 @@
                         "description": "Null Data is Not Allowed, Please fill in All Datas !"
                     },
                     "401": {
-                        "description": "The employeeName already exists ! (OR) Token incorrect ! (OR) Token expired, please authenticate again !"
+                        "description": "The employeeName already exists ! (OR) Invalid Token !"
                     },
                     "404": {
-                        "description": "Boss ID Not Found ! (OR) Token Not found !"
+                        "description": "Boss ID Not Found !"
                     },
                     "405": {
                         "description": "The field's, must to be a string ! (OR) The baseSalary field , must to be a number int or float !"
@@ -412,10 +412,10 @@
                         }
                     },
                     "401": {
-                        "description": "Token incorrect ! (OR) Token expired, please authenticate again !"
+                        "description": "Invalid Token !"
                     },
                     "404": {
-                        "description": "Employee Not Found ! (OR) Token Not found !"
+                        "description": "Employee Not Found !"
                     }
                 }
             }
@@ -444,10 +444,10 @@
                         "description": "Employee deleted with success !"
                     },
                     "401": {
-                        "description": "Token incorrect ! (OR) Token expired, please authenticate again !"
+                        "description": "Invalid Token !"
                     },
                     "404": {
-                        "description": "Employee Not Found ! (OR) Token Not found !"
+                        "description": "Employee Not Found !"
                     }
                 }
             }
@@ -623,10 +623,10 @@
                         }
                     },
                     "401": {
-                        "description": "You can only calculate 1 vacation for each employee ! (OR) Token incorrect ! (OR) Token expired, please authenticate again !"
+                        "description": "You can only calculate 1 vacation for each employee ! (OR) Invalid Token !"
                     },
                     "404": {
-                        "description": "Employee Not Found ! (OR) Token Not found !"
+                        "description": "Employee Not Found !"
                     }
                 }
             }
@@ -705,10 +705,10 @@
                         }
                     },
                     "401": {
-                        "description": "Token incorrect ! (OR) Token expired, please authenticate again !"
+                        "description": "Invalid Token !"
                     },
                     "404": {
-                        "description": "Vacation not found ! (OR) Token Not found !"
+                        "description": "Vacation not found !"
                     }
                 }
             }
@@ -737,10 +737,10 @@
                         "description": "Vacation deleted with success !"
                     },
                     "401": {
-                        "description": "Token incorrect ! (OR) Token expired, please authenticate again !"
+                        "description": "Invalid Token !"
                     },
                     "404": {
-                        "description": "Vacation not found ! (OR) Token Not found !"
+                        "description": "Vacation not found !"
                     }
                 }
             }
