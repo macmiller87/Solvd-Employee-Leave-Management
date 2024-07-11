@@ -25,6 +25,12 @@ createEmployeeRouter.post("/createEmployee", async (request, response) => {
 
     }else {
 
+        let regexDate = /^\d{2}\/\d{2}\/\d{4}$/;
+
+        if(!regexDate.test(startDate)) {
+            throw new AppError("The startDate field  isn't in the rigth format mm/dd/yyyy, please change !", 401);
+        }
+
         const employee = await employeeRepository.findEmployeeByName(employeeName);
 
         if(employee === true) {

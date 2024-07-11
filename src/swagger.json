@@ -337,7 +337,7 @@
                         "description": "Null Data is Not Allowed, Please fill in All Datas !"
                     },
                     "401": {
-                        "description": "The employeeName already exists ! (OR) Invalid Token !"
+                        "description": "The employeeName already exists ! (OR) The startDate field  isn't in the rigth format mm/dd/yyyy, please change ! (OR) Invalid Token !"
                     },
                     "404": {
                         "description": "Boss ID Not Found !"
