@@ -40,6 +40,8 @@
 
 ### 🚀 How to create and running the end-points
 
+- See here in this link: [Word Document](https://1drv.ms/w/c/376ab705ff1b169b/ERCFqOooS2pCpZu5wfWtTcEBowaWA-8i2N-H0AvxgU53fg?e=yRzlMT) prints and explanations of how you can configure all the routes below.
+
 #### Routes of `Boss` Module.
 
 ##### CreateBoss: Post - `/createBoss`
