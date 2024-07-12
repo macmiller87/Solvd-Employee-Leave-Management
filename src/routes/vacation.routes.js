@@ -1,10 +1,14 @@
-import { calculteEmployeeVacationRoute } from "../modules/vacation/useCases/calculateVacationUseCase.js";
-import { searchVacationRoute } from "../modules/vacation/useCases/searchVacationUseCase.js";
-import { deleteVacationRoute } from "../modules/vacation/useCases/deleteVacationUseCase.js";
+import { CalculteEmployeeVacation } from "../modules/vacation/useCases/calculateVacationUseCase.js";
+import { SearchVacation } from "../modules/vacation/useCases/searchVacationUseCase.js";
+import { DeleteVacation } from "../modules/vacation/useCases/deleteVacationUseCase.js";
 import { Router } from "express";
 
 export const vacationRoutes = Router();
 
-vacationRoutes.use(calculteEmployeeVacationRoute);
-vacationRoutes.use(searchVacationRoute);
-vacationRoutes.use(deleteVacationRoute);
+const calculteEmployeeVacationRoute = new CalculteEmployeeVacation();
+const searchVacationRoute = new SearchVacation();
+const deleteVacationRoute = new DeleteVacation();
+
+vacationRoutes.post("/calculateVacation", calculteEmployeeVacationRoute.execute);
+vacationRoutes.get("/searchVacation", searchVacationRoute.execute);
+vacationRoutes.delete("/deleteVacation", deleteVacationRoute.execute);
