@@ -1,23 +1,24 @@
 import { BossRepository } from "../repository/bossRepository.js";
 import { AppError } from "../../../error/appError.js";
-import { Router } from "express";
-
-export const deleteBossRouter = Router();
 
 const bossRepository = new BossRepository();
 
-deleteBossRouter.delete("/deleteBoss", async (request, response) => {
+export class DeleteBoss {
 
-    const { boss_id } = request.query;
+    async execute(request, response) {
 
-    const findBossById = await bossRepository.findBossById(boss_id);
+        const { boss_id } = request.query;
 
-    if(findBossById === false) {
-        throw new AppError("Boss_id not found, or Incorrect !", 404);
+        const findBossById = await bossRepository.findBossById(boss_id);
+
+        if(findBossById === false) {
+            throw new AppError("Boss_id not found, or Incorrect !", 404);
+        }
+
+        await bossRepository.deleteBossById(boss_id);
+
+        return response.status(200).json({ message: "Boss deleted with success !" });
+
     }
 
-    await bossRepository.deleteBossById(boss_id);
-
-    return response.status(200).json({ message: "Boss deleted with success !" });
-    
-});
+}

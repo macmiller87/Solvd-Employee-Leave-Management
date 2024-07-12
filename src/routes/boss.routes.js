@@ -1,12 +1,17 @@
-import { createBossRouter } from "../modules/boss/useCases/createBossUseCase.js";
-import { createBossTokenRouter } from "../modules/boss/useCases/createBossTokenUseCase.js";
-import { searchBossRouter } from "../modules/boss/useCases/searchBoss.js";
-import { deleteBossRouter } from "../modules/boss/useCases/deleteBossUseCase.js";
+import { CreateBoss } from "../modules/boss/useCases/createBossUseCase.js";
+import { CreateBossToken } from "../modules/boss/useCases/createBossTokenUseCase.js";
+import { SearchBoss } from "../modules/boss/useCases/searchBoss.js";
+import { DeleteBoss } from "../modules/boss/useCases/deleteBossUseCase.js";
 import { Router } from "express";
 
 export const bossRoutes = Router();
 
-bossRoutes.use(createBossRouter);
-bossRoutes.use(createBossTokenRouter);
-bossRoutes.use(searchBossRouter);
-bossRoutes.use(deleteBossRouter);
+const createBossRouter = new CreateBoss();
+const createBossTokenRouter = new CreateBossToken();
+const searchBossRouter = new SearchBoss();
+const deleteBossRouter = new DeleteBoss();
+
+bossRoutes.post("/createBoss", createBossRouter.execute);
+bossRoutes.post("/createToken", createBossTokenRouter.execute);
+bossRoutes.get("/searchBoss", searchBossRouter.execute);
+bossRoutes.delete("/deleteBoss", deleteBossRouter.execute);
