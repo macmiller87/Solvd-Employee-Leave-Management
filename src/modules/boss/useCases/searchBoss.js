@@ -2,6 +2,7 @@ import { BossRepository } from "../repository/bossRepository.js";
 import { AppError } from "../../../error/appError.js"
 
 const bossRepository = new BossRepository();
+
 export class SearchBoss {
 
     async execute(request, response) {

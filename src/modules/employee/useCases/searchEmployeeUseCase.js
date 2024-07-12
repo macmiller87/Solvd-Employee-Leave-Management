@@ -3,6 +3,7 @@ import { EmployeeRepository } from "../repository/employeeRepository.js";
 import { AppError } from "../../../error/appError.js";
 
 const employeeRepository = new EmployeeRepository();
+
 export class SearchEmployee {
 
     async execute(request, response) {

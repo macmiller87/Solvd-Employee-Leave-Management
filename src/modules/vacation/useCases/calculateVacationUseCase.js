@@ -5,6 +5,7 @@ import { AppError } from "../../../error/appError.js";
 
 const employeeRepository = new EmployeeRepository();
 const vacationRepository = new VacationRepository();
+
 export class CalculteEmployeeVacation {
 
     async execute(request, response) {

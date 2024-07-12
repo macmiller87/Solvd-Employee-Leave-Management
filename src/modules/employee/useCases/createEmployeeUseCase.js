@@ -5,6 +5,7 @@ import { AppError } from "../../../error/appError.js";
 
 const bossRepository = new BossRepository();
 const employeeRepository = new EmployeeRepository();
+
 export class CreateEmployee {
 
     async execute(request, response) {

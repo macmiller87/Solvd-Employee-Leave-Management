@@ -4,6 +4,7 @@ import pkg from 'bcryptjs';
 const { hash } = pkg;
 
 const bossRepository = new BossRepository();
+
 export class CreateBoss {
 
     async execute(request, response) {

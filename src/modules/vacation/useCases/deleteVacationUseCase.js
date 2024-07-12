@@ -3,6 +3,7 @@ import { EnsureUserAuthenticate } from "../../../auth/EnsureBossAuthenticate.js"
 import { AppError } from "../../../error/appError.js";
 
 const vacationRepository = new VacationRepository();
+
 export class DeleteVacation {
 
     async execute(request, response) {
