@@ -8,7 +8,8 @@
   "type": "module",
   "scripts": {
     "dev": "node --watch --env-file=.env src/server.js",
-    "dev:debug": "node --inspect --env-file=.env src/server.js"
+    "dev:debug": "node --inspect --env-file=.env src/server.js",
+    "create:tables": "node --env-file=.env src/database/local-tables/createTables.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
