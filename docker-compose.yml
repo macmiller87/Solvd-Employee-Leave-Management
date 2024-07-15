@@ -27,7 +27,8 @@ services:
       - POSTGRES_PASSWORD=docker   
       - POSTGRES_DB=dbdocker         
     volumes:                        
-      - pgdata:/data/postgres          
+      - pgdata:/data/postgres
+      - ./src/database/docker-tables/:/docker-entrypoint-initdb.d/          
           
 volumes:                         
   pgdata:                     
