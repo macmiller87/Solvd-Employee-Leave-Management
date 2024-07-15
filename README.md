@@ -31,7 +31,7 @@
 ### 💻 Tables Diagram
 
 <p align="center">
-    <img src="src/database/tables/Solvd_Employee_Leave_Mnagement_Diagram.png" alt="demonstration"/>
+    <img src="screens/Solvd_Employee_Leave_Mnagement_Diagram.png" alt="demonstration"/>
 </p>
 
 ### Base URL
@@ -142,8 +142,10 @@
 - Copy the url of this repo in tab `< > CODE`, and running in terminal .... `git clone "link...."`
 - Go to project folder .... `cd Solvd-Employee-Leave-Management`
 - Install dependencies .... `npm install` or `yarn install`, depends on the installed package manager.
-- You will need to create a database with any name that you want, and run the scripts for create the tables that is in a file `tables.sql` of this application, in your tool for manipulate the database `postgres`.
 - You will need to create a `.env` file on `root` of this application, and copy the environment variables that is in `.env.example` of this application.  
+- `IMPORTANT`: uncomment this line (POSTGRES_HOST_LOCAL=localhost) in your `.env` file created in the previous step.
+- You will need to create a database with any name that you want, and run the scripts for create the tables that is in a file `createTables.js` for do it, run the folow comand `npm create:tables` or `yarn create:tables` in your terminal.
+- After do the steps above, you can run `npm dev` or `yarn dev`, in your ternminal for run this application.
 
 ### 🚀 How to running this application in docker container
 
@@ -152,8 +154,9 @@
 - Copy the url of this repo in tab `< > CODE`, and running in terminal .... `git clone "link...."`
 - Go to project folder .... `cd Solvd-Employee-Leave-Management`
 - Install dependencies .... `npm install` or `yarn install`, depends on the installed package manager.
-- You will need to run the scripts for create the tables that is in a file `tables.sql` of this application, in your tool for manipulate the database `postgres`.   
 - You will need to create a `.env` file on `root` of this application, and copy the environment variables that is in `.env.example` of this application. 
+- `IMPORTANT`: keep this line commented (# POSTGRES_HOST_LOCAL=localhost) in your `.env` file created in the previous step.
+- Tables in the docker container database are created automatically.   
 
 - After following check the steps above, you can running the application with the follow comand `docker compose up`.
 - For stop you can use the follow comand `docker compose down`.
