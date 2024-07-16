@@ -1,11 +1,11 @@
-CREATE TABLE "boss" (
+CREATE TABLE IF NOT EXISTS "boss" (
     "boss_id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE "bosstoken" (
+CREATE TABLE IF NOT EXISTS "bosstoken" (
     "boss_id" TEXT NOT NULL,
     "token_id" TEXT NOT NULL PRIMARY KEY,
     "token" TEXT NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE "bosstoken" (
     CONSTRAINT "bosstoken_boss_id_fkey" FOREIGN KEY("boss_id") REFERENCES "boss"("boss_id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE "employee" (
+CREATE TABLE IF NOT EXISTS "employee" (
     "boss_id" TEXT NOT NULL,
     "employee_id" TEXT NOT NULL PRIMARY KEY,
     "employeename" TEXT NOT NULL UNIQUE,
@@ -26,7 +26,7 @@ CREATE TABLE "employee" (
     CONSTRAINT "employee_boss_id_fkey" FOREIGN KEY("boss_id") REFERENCES "boss"("boss_id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE "vacation" (
+CREATE TABLE IF NOT EXISTS "vacation" (
   	"vacation_id" TEXT NOT NULL PRIMARY KEY,
     "employee_id" TEXT NOT NULL,
     "employee_name" TEXT NOT NULL UNIQUE,
