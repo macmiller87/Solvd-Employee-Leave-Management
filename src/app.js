@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import "express-async-errors";
 import swaggerUi  from "swagger-ui-express";
-import swaggerFile  from "./swagger.json" assert { type: "json" };
+import swaggerFile  from "./swagger.json" with { type: "json" };
 import { AppError } from "./error/appError.js";
 import { bossRoutes } from "./routes/boss.routes.js";
 import { employeeRoutes } from "./routes/employee.routes.js";

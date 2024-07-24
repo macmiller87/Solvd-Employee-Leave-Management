@@ -1,4 +1,4 @@
-version: "3.9"                      
+version: "3"                      
 
 services:       
   app:                              
@@ -14,21 +14,38 @@ services:
     links:
       - database                     
     depends_on:
-      - database 
+      database: 
+        condition: service_healthy
 
   database:                         
     image: postgres                 
     container_name: database_solvd_employee_leave_management
+    user: postgres
     restart: always                 
     ports:
-      - "5432:5432"      
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5      
     environment:                 
       - POSTGRES_USER=postgres        
       - POSTGRES_PASSWORD=docker   
       - POSTGRES_DB=dbdocker         
     volumes:                        
       - pgdata:/data/postgres
-      - ./src/database/docker-tables/:/docker-entrypoint-initdb.d/          
+      - ./src/database/docker-tables/:/docker-entrypoint-initdb.d/      
+
+  tests:
+    build: .
+    container_name: integratedtests_solvd_employee_leave_management
+    command: npm run test
+    volumes:
+      - .:/usr/app
+    depends_on:
+      database: 
+        condition: service_healthy    
           
 volumes:                         
   pgdata:                     
