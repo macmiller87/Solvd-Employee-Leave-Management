@@ -85,7 +85,7 @@ export class CalculteEmployeeVacation {
                         baseSalary: searchEmployee[0].basesalary,
                         startDate: searchEmployee[0].startdate,
                         createdAt: searchEmployee[0].createdAt,
-                        vacation: [createVacation]
+                        vacation: createVacation
                     }
                 });
 
