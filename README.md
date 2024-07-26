@@ -26,6 +26,7 @@
 - Express
 - JsonWebToken
 - Docker
+- Jest
 - Swagger
 
 ### 💻 Tables Diagram
