@@ -105,6 +105,7 @@ describe("Calculate Vacation Controller", () => {
             authorization: `Bearer ${token}`
         }) 
 
+        expect(calcVacation.body.info).toStrictEqual({ message: "You don't have enough company time to take and calculate vacations !" });
         expect(calcVacation.body.employee).toHaveProperty("boss_id");
         expect(calcVacation.body.employee).toHaveProperty("employee_id");
         expect(calcVacation.body.employee.employeeName).toEqual("Second Employee");
