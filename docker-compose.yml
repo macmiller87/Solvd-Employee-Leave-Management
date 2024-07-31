@@ -44,6 +44,7 @@ services:
     command: npm run test
     volumes:
       - .:/usr/src/app
+      - /usr/src/app/node_modules
     depends_on:
       database: 
         condition: service_healthy    
