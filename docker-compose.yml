@@ -40,7 +40,7 @@ services:
 
   tests:
     build: .
-    container_name: integratedtests_solvd_employee_leave_management
+    container_name: tests_solvd_employee_leave_management
     command: npm run test
     volumes:
       - .:/usr/src/app
