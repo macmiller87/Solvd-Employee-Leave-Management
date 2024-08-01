@@ -162,13 +162,13 @@
 - After following check the steps above, you can running the application with the follow comand `docker compose up`.
 - For stop you can use the follow comand `docker compose down`.
 
-### 🚀 How to running integrated tests of this application on Docker
+### 🚀 How to running Tests of this application on Docker
 
 - After following the steps `How to running this application in docker container`.
 - Whenever you type `docker compose up` in the terminal to create the containers for this application, or when you start these containers with the same `docker compose up` command, docker will automatically run all the integration tests for this application, and you can see the results in the terminal.
 - After the above step, the container created to run the tests will be stopped automatically, and you will be able to test this application manually, if you wish. 
 
-### 🚀 How to running integrated tests of this application Localy
+### 🚀 How to running Tests of this application Localy
 
 - After following the steps `How to running this application Localy`.
 - Type on terminal `npm run test`, or `yarn run test`, deppends on your package manager installed.
