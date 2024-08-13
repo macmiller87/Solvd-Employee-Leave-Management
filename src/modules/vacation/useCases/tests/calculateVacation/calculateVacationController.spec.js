@@ -64,7 +64,7 @@ describe("Calculate Vacation Controller", () => {
         expect(calcVacation.body.employee.vacation[0].qtty_days_on_vacation).toEqual(30);
         expect(calcVacation.body.employee.vacation[0]).toHaveProperty("value_to_recieve");
         expect(calcVacation.body.employee.vacation[0]).toHaveProperty("time_worked_amount");
-        expect(calcVacation.body.employee.vacation[0]).toHaveProperty("createdAt");
+        expect(calcVacation.body.employee.vacation[0]).toHaveProperty("createdat");
         expect(calcVacation.status).toBe(201);
     });
 

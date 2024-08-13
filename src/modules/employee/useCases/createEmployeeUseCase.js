@@ -62,7 +62,7 @@ export class CreateEmployee {
                         jobTitle: createEmployee[0].jobtitle,
                         baseSalary: createEmployee[0].basesalary,
                         startDate: createEmployee[0].startdate,
-                        createdAt: createEmployee[0].createdAt,
+                        createdAt: createEmployee[0].createdat,
                     }
                 });
                 

@@ -62,7 +62,7 @@ describe("Calculate Vacation (Unit Test)", () => {
         expect(calcVacation.vacation[0].qtty_days_on_vacation).toEqual(30);
         expect(calcVacation.vacation[0]).toHaveProperty("value_to_recieve");
         expect(calcVacation.vacation[0]).toHaveProperty("time_worked_amount");
-        expect(calcVacation.vacation[0]).toHaveProperty("createdAt");
+        expect(calcVacation.vacation[0]).toHaveProperty("createdat");
     });
 
     it("should be able to send informations trought renponse about employee's vacation, if he have less than one year of work", async () => {

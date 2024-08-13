@@ -64,7 +64,7 @@ describe("Search Vacation Controller", () => {
         expect(search.body[0].qtty_days_on_vacation).toEqual(30);
         expect(search.body[0]).toHaveProperty("value_to_recieve");
         expect(search.body[0]).toHaveProperty("time_worked_amount");
-        expect(search.body[0]).toHaveProperty("createdAt");
+        expect(search.body[0]).toHaveProperty("createdat");
         expect(search.status).toBe(200);
     });
 

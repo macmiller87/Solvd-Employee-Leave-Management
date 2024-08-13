@@ -50,7 +50,7 @@
                                         "name": {
                                             "type": "string"
                                         },
-                                        "createdAt": {
+                                        "createdat": {
                                             "type": "string"
                                         }
                                     }
@@ -129,7 +129,7 @@
                                         "name": {
                                             "type": "string"
                                         },
-                                        "createdAt": {
+                                        "createdat": {
                                             "type": "string"
                                         },
                                         "token": {
@@ -192,7 +192,7 @@
                                         "name": {
                                             "type": "string"
                                         },
-                                        "createdAt": {
+                                        "createdat": {
                                             "type": "string"
                                             }
                                     }
@@ -314,7 +314,7 @@
                                         "startDate": {
                                             "type": "string"
                                         },
-                                        "createdAt": {
+                                        "createdat": {
                                             "type": "string"
                                         }
                                     }
@@ -392,7 +392,7 @@
                                         "startDate": {
                                             "type": "string"
                                         },
-                                        "createdAt": {
+                                        "createdat": {
                                             "type": "string"
                                         }
                                     }
@@ -496,7 +496,7 @@
                                         "startDate": {
                                             "type": "string"
                                         },
-                                        "createdAt": {
+                                        "createdat": {
                                             "type": "string"
                                         },
                                         "vacation": {
@@ -561,7 +561,7 @@
                                         "startDate": {
                                             "type": "string"
                                         },
-                                        "createdAt": {
+                                        "createdat": {
                                             "type": "string"
                                         },
                                         "vacation": {
@@ -589,7 +589,7 @@
                                             "time_worked_amount": {
                                                 "type": "string"
                                             },
-                                            "createdAt": {
+                                            "createdat": {
                                                 "type": "string"
                                             }
                                         }
@@ -614,7 +614,7 @@
 					                            "qtty_days_on_vacation": 0,
 					                            "value_to_recieve": 0,
 					                            "time_worked_amount": "Time calculated based on today's date ... Working time: ? months, ? days, and ? years ..",
-					                            "createdAt": "2024-06-25T18:16:44.499Z"
+					                            "createdat": "2024-06-25T18:16:44.499Z"
                                             }
                                         ]
 	                                }
@@ -681,7 +681,7 @@
                                         "time_worked_amount": {
                                             "type": "string"
                                         },
-                                        "createdAt": {
+                                        "createdat": {
                                             "type": "string"
                                         }
                                     }
@@ -697,7 +697,7 @@
                                             "qtty_days_on_vacation": 0,
                                             "value_to_recieve": 0,
                                             "time_worked_amount": "Working time: ? months, ? days, and ? years ..",
-                                            "createdAt": "2024-06-25T18:16:44.499Z"
+                                            "createdat": "2024-06-25T18:16:44.499Z"
                                         }
                                     ]
                                 }

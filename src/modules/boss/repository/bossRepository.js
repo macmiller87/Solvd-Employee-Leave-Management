@@ -33,7 +33,7 @@ export class BossRepository {
     }
 
     async getBossById(boss_id) {
-        const find = await postgresSql `SELECT * FROM boss WHERE boss_id = ${boss_id}`;
+        const find = await postgresSql `SELECT boss_id, name, password, createdat FROM boss WHERE boss_id = ${boss_id}`;
 
         const queryResult = find.count === 1 ? find : false;
         return queryResult;

@@ -61,7 +61,7 @@ export class CreateBossToken {
                 boss: {
                     boss_id: searchBoss[0].boss_id,
                     name: searchBoss[0].name,
-                    createdAt: searchBoss[0].createdAt
+                    createdAt: searchBoss[0].createdat
                 }, 
                 token: token
             });
