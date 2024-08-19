@@ -59,7 +59,7 @@ jobs:
       run: npm install
 
     - name: Run tests
-      run: npm test
+      run: npm node --no-warnings --experimental-vm-modules $(yarn bin jest) --runInBand
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
         SERVER_HOST: ${{ vars.SERVER_HOST }}
