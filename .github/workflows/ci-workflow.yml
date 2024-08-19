@@ -59,7 +59,9 @@ jobs:
       run: npm install
 
     - name: Run tests
-      run: npm run test:github:actions
+      run: | 
+        npm install
+        npm run test:github:actions
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
         POSTGRES_PORT: 5432
