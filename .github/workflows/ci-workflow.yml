@@ -57,7 +57,7 @@ jobs:
       run: npm install
 
     - name: Setup database
-      run: POSTGRES_PASSWORD=${{ vars.POSTGRES_USER_DOCKER }}  psql -h vars.POSTGRES_HOST_DOCKER -U ${{ vars.POSTGRES_USER_DOCKER }} -d vars.POSTGRES_DATABASE_DOCKER -f ./src/database/docker-tables.sql
+      run: POSTGRES_PASSWORD=${{ vars.POSTGRES_USER_DOCKER }}  psql -h  ${{ vars.POSTGRES_HOST_DOCKER }} -U ${{ vars.POSTGRES_USER_DOCKER }} -d vars.POSTGRES_DATABASE_DOCKER -f ./src/database/docker-tables.sql
 
     - name: Run tests
       run: npm run test:github:actions
