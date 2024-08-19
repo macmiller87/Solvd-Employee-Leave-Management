@@ -6,9 +6,11 @@ on:
       - "**.js"
       - "**.json"
       - "**.yml"
-    branches: [ "master" ]
+    branches: 
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches: 
+      - master
 
 jobs:
   setup-and-test:
