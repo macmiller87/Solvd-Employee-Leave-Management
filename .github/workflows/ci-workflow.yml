@@ -11,29 +11,60 @@ on:
     branches: [ "master" ]
 
 jobs:
-  setup-and-test:
+
+  app:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.15.0
+
+    - name: Install dependencies
+      run: npm ci
+
+  container-job-database:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+        volumes: 
+          - ./src/database/docker-tables/:/docker-entrypoint-initdb.d/ 
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
-    - name: Set up Docker Compose
-      run: |
-        sudo rm /usr/src/app/docker-compose
-        curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /tmp/docker-compose
-        chmod +x /tmp/docker-compose
-        sudo mv /tmp/docker-compose /usr/src/app/docker-compose
-    
-    - name: Start app
-      run: docker-compose up -d app
-    
-    - name: Use Node.js
+      
+    - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 20.15.0
-    - run: npm ci
-    - run: npm test
 
-    - name: Clean up
-      run: docker-compose down --volumes
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run tests
+      run: npm test -- --no-cache
+      env:
+        POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+        SERVER_HOST: ${{ vars.SERVER_HOST }}
+        SERVER_PORT: ${{ vars.SERVER_PORT }}
+        SECRET_TOKEN: ${{ secret.SECRET_TOKEN }}
+        LOCALE: ${{ vars.LOCALE }}
+        
+
