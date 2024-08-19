@@ -62,6 +62,7 @@ jobs:
       run: npm run test:github:actions
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+        POSTGRES_PORT: 5432
         SERVER_HOST: ${{ vars.SERVER_HOST }}
         SERVER_PORT: ${{ vars.SERVER_PORT }}
         SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
