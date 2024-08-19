@@ -28,7 +28,7 @@ jobs:
         sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
 
     - name: Start app
-      run: docker-compose up
+      run: docker-compose up app
     
     - name: Use Node.js
       uses: actions/setup-node@v4
