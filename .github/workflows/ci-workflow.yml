@@ -6,11 +6,9 @@ on:
       - "**.js"
       - "**.json"
       - "**.yml"
-    branches: 
-      - master
+    branches: [ "master" ]
   pull_request:
-    branches: 
-      - master
+    branches: [ "master" ]
 
 jobs:
   setup-and-test:
@@ -23,12 +21,12 @@ jobs:
     - name: Set up Docker Compose
       run: |
         sudo rm /usr/local/bin/docker-compose
-        curl -L "https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /tmp/docker-compose
+        curl -L "https://github.com/docker/compose/releases/tag/v2.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /tmp/docker-compose
         chmod +x /tmp/docker-compose
         sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
 
     - name: Start app
-      run: docker-compose up app
+      run: docker-compose up
     
     - name: Use Node.js
       uses: actions/setup-node@v4
