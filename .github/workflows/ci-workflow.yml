@@ -58,7 +58,7 @@ jobs:
         node-version: 20.15.0
 
     - run: yarn install
-    - run: ./touch .env
+    - run: touch .env
     - run: npm run test
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
@@ -67,5 +67,6 @@ jobs:
         SERVER_PORT: ${{ vars.SERVER_PORT }}
         SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
         LOCALE: ${{ vars.LOCALE }}
+    - run: rm .env
         
 
