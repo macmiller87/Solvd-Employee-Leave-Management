@@ -43,8 +43,13 @@ jobs:
         run: yarn install
     
       - name: Connect to PostgreSQL
-      - run: node ./src/database/service/postgService.js
-      - run: node run create:tables
+        run: node ./src/database/service/postgService.js
+        env:
+         POSTGRES_HOST: postgres
+         POSTGRES_PORT: 5432
+
+      - name: Create Tables
+        run: node run create:tables
         env:
          POSTGRES_HOST: postgres
          POSTGRES_PORT: 5432
