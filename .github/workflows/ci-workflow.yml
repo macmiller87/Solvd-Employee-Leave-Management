@@ -58,6 +58,7 @@ jobs:
         node-version: 20.15.0
 
     - run: yarn install
+    - run: ./touch .env
     - run: npm run test
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
