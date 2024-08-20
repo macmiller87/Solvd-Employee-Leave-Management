@@ -42,10 +42,10 @@ jobs:
         node-version: 20.15.0
 
     - name: Install dependencies
-    - run: yarn install
+      run: yarn install
 
     - name: Connect to PostgreSQL
-    - run: node ./src/database/service/postgService.js
+      run: node ./src/database/service/postgService.js
       env:
         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
         POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
@@ -71,13 +71,13 @@ jobs:
         node-version: 20.15.0
 
     - name: Install dependencies
-    - run: yarn install
+      run: yarn install
 
     - name: Connect to PostgreSQL
       uses: ./src/database/service/postgService.js
 
     - name: Run Tests
-    - run: npm run test:github:actions
+      run: npm run test:github:actions
       env:
         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
         POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
