@@ -71,10 +71,6 @@ jobs:
 
     - run: yarn install
 
-    - run: npm run test:github:actions
-      env:
-        POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}  
-
     - name: Run Tests
       uses: ./src/database/service/postgService.js
       run: npm run test:github:actions
