@@ -34,7 +34,7 @@ jobs:
 
    - name: Build Docker Image
      uses: docker/setup-buildx-action@v3
-      with:
+     with:
         context: .
         push: true
         tags: ${{ secret.DOCKER_HUB_USER }}/solvd-employee-leave-management:latest
