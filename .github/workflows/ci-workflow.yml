@@ -16,7 +16,7 @@ jobs:
   container-job:
     runs-on: ubuntu-latest
     
-    container: node:10.18-jessie
+    container: node:20.15.0
     services:
       postgres:
         image: postgres
