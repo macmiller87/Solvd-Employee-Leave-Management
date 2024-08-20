@@ -58,7 +58,7 @@ jobs:
         node-version: 20.15.0
 
     - run: yarn install
-    - run: npm run test:github:actions
+    - run: npm run test
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
         POSTGRES_PORT: 5432
