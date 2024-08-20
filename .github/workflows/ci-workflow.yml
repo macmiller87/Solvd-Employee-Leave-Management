@@ -48,14 +48,6 @@ jobs:
          POSTGRES_HOST: postgres
          POSTGRES_PORT: 5432
 
-      - name: Create Tables
-        run: node run create:tables
-        env:
-         POSTGRES_HOST: postgres
-         POSTGRES_PORT: 5432
-
-      - name: Run Tests
-      - run: npm run
 
 
 
