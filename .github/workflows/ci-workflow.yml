@@ -42,7 +42,7 @@ jobs:
       run: sleep 10
 
     - name: Setup database
-      run: POSTGRES_PASSWORD=2288 psql -h localhost -U postgres2 -d -f ./src/database/docker-tables/tables.sql
+      run: POSTGRES_PASSWORD=2288 psql -h localhost -U postgres2 -d dbpostgressolvdelm -f ./src/database/docker-tables/tables.sql
 
     - name: Run Tests
       run: npm run test 
