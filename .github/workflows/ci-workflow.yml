@@ -16,7 +16,7 @@ jobs:
   container-job:
     runs-on: ubuntu-latest
     
-    container: macmiller87/solvd-employee-leave-management
+    container: node:10.18-jessie
     services:
       postgres:
         image: postgres
