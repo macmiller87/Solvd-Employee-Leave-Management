@@ -28,7 +28,7 @@ jobs:
           SERVER_PORT: ${{ vars.SERVER_PORT }}
           SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
           LOCALE: ${{ vars.LOCALE }}
-          options: >-
+        options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
