@@ -39,6 +39,16 @@ jobs:
         push: true
         tags: ${{ vars.DOCKER_HUB_USER }}/solvd-employee-leave-management:latest
 
+  tests:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://macmiller87/solvd-employee-leave-management
+
+    steps:
+      - name: Run Docker compose
+        run: docker compose up
+
+
 
 
 
