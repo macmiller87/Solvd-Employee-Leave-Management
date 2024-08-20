@@ -48,7 +48,7 @@ jobs:
     - run: yarn install
 
     - name: Set up Docker
-      run: npm run dev:actions
+      run: docker compose up
       env:
         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
         POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
