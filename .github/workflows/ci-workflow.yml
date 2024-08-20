@@ -12,9 +12,8 @@ on:
 
 jobs:
 
-  container-job:
+  database:
     runs-on: ubuntu-latest
-    container: database_solvd_employee_leave_management
 
     services:
       postgres:
