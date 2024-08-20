@@ -44,7 +44,7 @@ jobs:
     - run: yarn install
 
     - name: Connect to PostgreSQL
-      run: node postgService.js
+      run: node ./src/database/service/postgService.js
       env:
         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
         POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
