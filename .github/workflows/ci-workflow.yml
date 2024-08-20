@@ -11,8 +11,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-
-  builds:
+  docker-image:
     runs-on: ubuntu-latest
         
     steps:
