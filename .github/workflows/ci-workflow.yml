@@ -72,7 +72,6 @@ jobs:
 
     - run: yarn install
 
-    - name: Run Tests
     - run: npm run test:github:actions
       env:
         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
