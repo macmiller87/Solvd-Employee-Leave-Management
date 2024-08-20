@@ -49,7 +49,7 @@ jobs:
          POSTGRES_PORT: 5432
       
       - name: Run Tests
-        run: npm run
+        run: npm run test
         env:
          POSTGRES_HOST: postgres
          POSTGRES_PORT: 5432
