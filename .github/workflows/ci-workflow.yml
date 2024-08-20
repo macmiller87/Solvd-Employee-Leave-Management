@@ -46,6 +46,18 @@ jobs:
         node-version: 20.15.0
 
     - run: yarn install
-    - run: docker compose up
+
+    - name: Set up Docker
+      run: docker compose up
+       env:
+          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+          POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+          POSTGRES_PORT: 5432
+          SERVER_HOST: ${{ vars.SERVER_HOST }}
+          SERVER_PORT: ${{ vars.SERVER_PORT }}
+          SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          LOCALE: ${{ vars.LOCALE }}
         
 
