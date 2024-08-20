@@ -49,6 +49,7 @@ jobs:
     needs: database
 
     steps:
+    - run: yarn install
     - run: npm run test:github:actions
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
