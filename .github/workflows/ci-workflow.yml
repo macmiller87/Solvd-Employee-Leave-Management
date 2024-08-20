@@ -32,7 +32,7 @@ jobs:
        username: ${{ secret.DOCKER_HUB_USER }}
        password: ${{ secret.DOCKER_HUB_PASSWORD }}
 
-   -  name: Build Docker Image
+    - name: Build Docker Image
       uses: docker/setup-buildx-action@v3
       with:
         context: .
