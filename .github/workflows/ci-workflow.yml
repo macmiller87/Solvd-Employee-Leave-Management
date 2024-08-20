@@ -29,6 +29,9 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+        volumes:
+          - ./src/database/docker-tables/tables.sql
+        
     
     steps:
     - name: Checkout repository
@@ -40,6 +43,9 @@ jobs:
         node-version: 20.15.0
 
     - run: yarn install
+
+  tests:
+    needs: database
     - run: npm run test:github:actions
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
