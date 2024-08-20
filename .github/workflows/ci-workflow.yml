@@ -45,7 +45,7 @@ jobs:
       with:
         node-version: 20.15.0
 
-    - run: yarn ci
+    - run: yarn install
     - run: npm run test:github:actions
         
 
