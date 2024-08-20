@@ -41,10 +41,10 @@ jobs:
       with:
         node-version: 20.15.0
 
-    - run: yarn install
+      run: yarn install
 
     - name: Runing tests
-    - run: npm run test:github:actions
+      run: npm run test:github:actions
       env:
         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
         POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
