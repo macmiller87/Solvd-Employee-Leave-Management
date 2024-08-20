@@ -39,15 +39,48 @@ jobs:
         push: true
         tags: ${{ vars.DOCKER_HUB_USER }}/solvd-employee-leave-management:latest
 
-  tests:
+  test:
     runs-on: ubuntu-latest
-    needs: docker-image
-    container:
-      image: macmiller87/solvd-employee-leave-management
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: solvd_user
+          POSTGRES_PASSWORD: solvd_password
+          POSTGRES_DB: metro_system
+        ports:
+          - 5432:5432
 
     steps:
-      - name: Run Docker compose
-        run: docker compose up
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.15.0
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Wait for PostgreSQL to start
+      run: sleep 10
+
+    - name: Setup database
+      run: POSTGRES_PASSWORD=${{ vars.POSTGRES_PASSWORD_DOCKER }} psql -h ${{ vars.POSTGRES_HOST_DOCKER }} -U ${{ vars.POSTGRES_USER_DOCKER }} -d ${{ vars.POSTGRES_DATABASE_DOCKER }} -f ./src/database/docker-tables/tables.sql
+
+    - name: Run Tests
+      run: npm run test 
+      env:
+        POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
+        POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+        POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+        POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+        POSTGRES_PORT: 5432
+        SERVER_HOST: ${{ vars.SERVER_HOST }}
+        SERVER_PORT: ${{ vars.SERVER_PORT }}
+        SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
+        LOCALE: ${{ vars.LOCALE }}
 
 
 
