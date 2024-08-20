@@ -74,7 +74,7 @@ jobs:
       run: yarn install
 
     - name: Connect to PostgreSQL
-      uses: actions/src/database/service/postgService.js
+      uses: database
 
     - name: Run Tests
       run: npm run test:github:actions
