@@ -18,10 +18,13 @@ jobs:
     
     container: macmiller87/solvd-employee-leave-management
     services:
-      postgres:
+      database:
         image: postgres
         env:     
-          POSTGRES_PASSWORD: postgres  
+          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+  
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -45,14 +48,28 @@ jobs:
       - name: Connect to PostgreSQL
         run: node ./src/database/service/postgService.js
         env:
-         POSTGRES_HOST: postgres
-         POSTGRES_PORT: 5432
+         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+          POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+          POSTGRES_PORT: 5432
+          SERVER_HOST: ${{ vars.SERVER_HOST }}
+          SERVER_PORT: ${{ vars.SERVER_PORT }}
+          SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          LOCALE: ${{ vars.LOCALE }}
       
       - name: Run Tests
         run: npm run test:github:actions
         env:
-         POSTGRES_HOST: postgres
-         POSTGRES_PORT: 5432
+         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+          POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+          POSTGRES_PORT: 5432
+          SERVER_HOST: ${{ vars.SERVER_HOST }}
+          SERVER_PORT: ${{ vars.SERVER_PORT }}
+          SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          LOCALE: ${{ vars.LOCALE }}
 
 
 
