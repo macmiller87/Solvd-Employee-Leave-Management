@@ -73,7 +73,8 @@ jobs:
 
     - name: Run Tests
       uses: ./src/database/service/postgService.js
-      run: npm run test:github:actions
+
+    - run: npm run test:github:actions
       env:
         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
         POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
