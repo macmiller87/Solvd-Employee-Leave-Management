@@ -20,9 +20,9 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: solvd_user
-          POSTGRES_PASSWORD: solvd_password
-          POSTGRES_DB: metro_system
+          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}  
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
         ports:
           - 5432:5432
 
@@ -42,7 +42,7 @@ jobs:
       run: sleep 10
 
     - name: Setup database
-      run: POSTGRES_PASSWORD=${{ vars.POSTGRES_PASSWORD_DOCKER }} psql -h localhost -U ${{ vars.POSTGRES_USER_DOCKER }} -d ${{ vars.POSTGRES_DATABASE_DOCKER }} -f ./src/database/docker-tables/tables.sql
+      run: POSTGRES_PASSWORD=${{ vars.POSTGRES_PASSWORD_DOCKER }} psql -h ${{ vars.POSTGRES_HOST_DOCKER }} -U ${{ vars.POSTGRES_USER_DOCKER }} -d ${{ vars.POSTGRES_DATABASE_DOCKER }} -f ./src/database/docker-tables/tables.sql
 
     - name: Run Tests
       run: npm run test 
