@@ -59,7 +59,6 @@ jobs:
 
     - run: yarn install
     - run: touch .env
-    - run: npm run test
       env:
         POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
         POSTGRES_PORT: 5432
@@ -67,6 +66,7 @@ jobs:
         SERVER_PORT: ${{ vars.SERVER_PORT }}
         SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
         LOCALE: ${{ vars.LOCALE }}
+    - run: npm run test
     - run: rm .env
         
 
