@@ -43,7 +43,8 @@ jobs:
 
     - run: yarn install
 
-    - run: npm run test:github:actions
+    - name: Connect to PostgreSQL
+      run: node ./src/database/service/postgService.js
       env:
         POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
         POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
@@ -54,6 +55,10 @@ jobs:
         SERVER_PORT: ${{ vars.SERVER_PORT }}
         SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
         LOCALE: ${{ vars.LOCALE }}
+
+    - name: Run Tests
+      uses: ./src/database/service/postgService.js
+      run: npm run test:github:actions
 
 
 
