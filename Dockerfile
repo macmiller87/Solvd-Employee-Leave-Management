@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["npm","run","dev", "dev:actions"]
+CMD ["npm","run","dev"]
