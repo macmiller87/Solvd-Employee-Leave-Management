@@ -18,7 +18,7 @@ jobs:
     
     container: macmiller87/solvd-employee-leave-management
     services:
-      database:
+      postgres:
         image: postgres
         env:     
           POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
