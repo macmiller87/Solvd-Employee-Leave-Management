@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Continuous integration
 
 on:
   push:
@@ -12,20 +12,6 @@ on:
 
 jobs:
 
-  app:
-   runs-on: ubuntu-latest
-   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20.15.0
-
-    - name: Install dependencies
-      run: npm install
-
   database:
     runs-on: ubuntu-latest
 
@@ -36,7 +22,13 @@ jobs:
           POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
           POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
           POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
-        options: >-
+          POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+          POSTGRES_PORT: 5432
+          SERVER_HOST: ${{ vars.SERVER_HOST }}
+          SERVER_PORT: ${{ vars.SERVER_PORT }}
+          SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          LOCALE: ${{ vars.LOCALE }}
+          options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
@@ -53,17 +45,7 @@ jobs:
       with:
         node-version: 20.15.0
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run tests
-      run: npm run test:github:actions
-      env:
-        POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
-        POSTGRES_PORT: 5432
-        SERVER_HOST: ${{ vars.SERVER_HOST }}
-        SERVER_PORT: ${{ vars.SERVER_PORT }}
-        SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
-        LOCALE: ${{ vars.LOCALE }}
+    - run: npm ci
+    - run: npm run test:github:actions
         
 
