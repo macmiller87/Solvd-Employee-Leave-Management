@@ -58,7 +58,7 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
-    needs: container-job
+    needs: database
 
     steps:
     - name: Checkout repository
