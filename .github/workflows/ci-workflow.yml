@@ -46,6 +46,6 @@ jobs:
         node-version: 20.15.0
 
     - run: yarn install
-    - run: npm run test:github:actions
+    - run: docker compose up
         
 
