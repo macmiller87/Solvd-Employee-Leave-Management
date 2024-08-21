@@ -53,6 +53,16 @@ jobs:
 
       - name: Run Tests
         run: yarn test:github:actions
+        env:
+          POSTGRES_HOST_DOCKER: ${{vars.POSTGRES_HOST_DOCKER}}
+          POSTGRES_PORT: 5432 
+          POSTGRES_DATABASE_DOCKER: ${{vars.POSTGRES_DATABASE_DOCKER}}
+          POSTGRES_USER_DOCKER: ${{vars.POSTGRES_USER_DOCKER}}     
+          POSTGRES_PASSWORD_DOCKER: ${{vars.POSTGRES_PASSWORD_DOCKER}}  
+          SERVER_HOST: ${{vars.SERVER_HOST}}
+          SERVER_PORT: ${{vars.SERVER_PORT}}
+          SECRET_TOKEN: ${{secrets.SECRET_TOKEN}}
+          LOCALE: ${{vars.LOCALE}}
 
 
 
