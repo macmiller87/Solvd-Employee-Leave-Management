@@ -22,7 +22,7 @@ jobs:
         image: postgres
         env:     
           POSTGRES_USER: postgres       
-          POSTGRES_PASSWORD: postgres  
+          POSTGRES_PASSWORD: jiujitsu  
           POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
         options: >-
           --health-cmd pg_isready
@@ -48,7 +48,7 @@ jobs:
         run: npm run create:tables:github:actions
         env:
           POSTGRES_USER: postgres       
-          POSTGRES_PASSWORD: postgres   
+          POSTGRES_PASSWORD: jiujitsu   
           POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
           POSTGRES_HOST_DOCKER: postgres
           POSTGRES_PORT: 5432
@@ -61,7 +61,7 @@ jobs:
         run: npm run test:github:actions
         env:
           POSTGRES_USER: postgres       
-          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}   
+          POSTGRES_PASSWORD: jiujitsu   
           POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
           POSTGRES_HOST_DOCKER: postgres
           POSTGRES_PORT: 5432
