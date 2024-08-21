@@ -36,9 +36,6 @@ jobs:
       - name: Setup Database and Create Tables
         run: PGPASSWORD=${{ vars.POSTGRES_PASSWORD_LOCAL }} psql -h ${{ vars.POSTGRES_HOST_LOCAL }} -U ${{ vars.POSTGRES_USER_LOCAL }} -d ${{ vars.POSTGRES_DATABASE_LOCAL }} -f ./src/database/docker-tables/tables.sql
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
