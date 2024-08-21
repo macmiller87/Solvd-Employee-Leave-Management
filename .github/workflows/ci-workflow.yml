@@ -13,9 +13,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  container-job:
+  database:
     runs-on: ubuntu-latest
-    container: node:10.18-jessie
     
     services:
       postgres:
@@ -48,7 +47,7 @@ jobs:
           POSTGRES_USER_DOCKER: postgres      
           POSTGRES_PASSWORD_DOCKER: postgres  
           POSTGRES_DATABASE_DOCKER: postgres
-          POSTGRES_HOST_DOCKER: database
+          POSTGRES_HOST_DOCKER: postgres
           POSTGRES_PORT: 5432
           SERVER_HOST: ${{ vars.SERVER_HOST }}
           SERVER_PORT: ${{ vars.SERVER_PORT }}
@@ -61,7 +60,7 @@ jobs:
           POSTGRES_USER_DOCKER: postgres      
           POSTGRES_PASSWORD_DOCKER: postgres  
           POSTGRES_DATABASE_DOCKER: postgres
-          POSTGRES_HOST_DOCKER: database
+          POSTGRES_HOST_DOCKER: postgres
           POSTGRES_PORT: 5432
           SERVER_HOST: ${{ vars.SERVER_HOST }}
           SERVER_PORT: ${{ vars.SERVER_PORT }}
