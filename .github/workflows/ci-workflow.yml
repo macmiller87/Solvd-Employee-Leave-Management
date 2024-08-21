@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     
     services:
+      user: postgres
       postgres:
         image: postgres
         env:     
