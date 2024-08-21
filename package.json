@@ -11,6 +11,7 @@
     "dev:debug": "node --inspect --env-file=.env --no-warnings src/server.js",
     "create:tables": "node --env-file=.env --no-warnings src/database/local-tables/createTables.js",
     "test": "node --env-file=.env --no-warnings --experimental-vm-modules $(yarn bin jest) --runInBand --forceExit",
+    "create:tables:github:actions": "node --no-warnings src/database/local-tables/createTables.js",
     "test:github:actions": "node --no-warnings --experimental-vm-modules $(yarn bin jest) --runInBand --forceExit"
   },
   "dependencies": {
