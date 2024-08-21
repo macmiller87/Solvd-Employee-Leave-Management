@@ -15,12 +15,13 @@ on:
 jobs:
   database:
     runs-on: ubuntu-latest
-    
     services:
       postgres:
-        image: postgres
+        image: postgres:13
         env:     
-          POSTGRES_PASSWORD: postgres      
+          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}        
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}   
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}       
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -40,14 +41,27 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+    
+      - name: Create Tables
+        run: npm run create:tables:github:actions
+        env:
+          POSTGRES_USER_DOCKER: ${{ vars.POSTGRES_USER_DOCKER }}     
+          POSTGRES_PASSWORD_DOCKER: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DATABASE_DOCKER: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+          POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+          POSTGRES_PORT: 5432
+          SERVER_HOST: ${{ vars.SERVER_HOST }}
+          SERVER_PORT: ${{ vars.SERVER_PORT }}
+          SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          LOCALE: ${{ vars.LOCALE }}
       
       - name: Run Tests
         run: npm run test:github:actions
         env:
-          POSTGRES_USER_DOCKER: postgres      
-          POSTGRES_PASSWORD_DOCKER: postgres  
-          POSTGRES_DATABASE_DOCKER: postgres
-          POSTGRES_HOST_DOCKER: postgres
+          POSTGRES_USER_DOCKER: ${{ vars.POSTGRES_USER_DOCKER }}     
+          POSTGRES_PASSWORD_DOCKER: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DATABASE_DOCKER: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+          POSTGRES_HOST_DOCKER:  ${{ vars.POSTGRES_HOST_DOCKER }}
           POSTGRES_PORT: 5432
           SERVER_HOST: ${{ vars.SERVER_HOST }}
           SERVER_PORT: ${{ vars.SERVER_PORT }}
