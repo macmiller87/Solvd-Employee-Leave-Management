@@ -51,8 +51,8 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Run Tests
-        run: yarn test:github:actions
+      - name: Preset PostgresSql
+        run: ./src/database/service/postgService.js
         env:
           POSTGRES_HOST_DOCKER: ${{vars.POSTGRES_HOST_DOCKER}}
           POSTGRES_PORT: 5432 
@@ -63,6 +63,9 @@ jobs:
           SERVER_PORT: ${{vars.SERVER_PORT}}
           SECRET_TOKEN: ${{secrets.SECRET_TOKEN}}
           LOCALE: ${{vars.LOCALE}}
+
+      - name: Run Tests
+        run: yarn test:github:actions
 
 
 
