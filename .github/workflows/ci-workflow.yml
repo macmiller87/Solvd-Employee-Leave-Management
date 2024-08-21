@@ -30,8 +30,12 @@ jobs:
         ports:
           - 5432:5432
     steps:
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Setup Database and Create Tables
-        run: PGPASSWORD=${{vars.POSTGRES_PASSWORD_DOCKER}} psql -h  ${{vars.POSTGRES_HOST_DOCKER}} -U ${{vars.POSTGRES_USER_DOCKER}} -d ${{vars.POSTGRES_DATABASE_DOCKER}} -f ./src/database/docker-tables/tables.sql
+        run: PGPASSWORD=${{vars.POSTGRES_PASSWORD_DOCKER}} psql -h ${{vars.POSTGRES_HOST_DOCKER}} -U ${{vars.POSTGRES_USER_DOCKER}} -d ${{vars.POSTGRES_DATABASE_DOCKER}} -f ./src/database/docker-tables/tables.sql
 
   app:
     runs-on: ubuntu-latest  
