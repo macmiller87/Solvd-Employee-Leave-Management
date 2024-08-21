@@ -18,12 +18,11 @@ jobs:
     
     container: node:20.15.0
     services:
-      user: postgres
       postgres:
         image: postgres
         env:     
-          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
-          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_USER: postgres       
+          POSTGRES_PASSWORD: postgres  
           POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
         options: >-
           --health-cmd pg_isready
@@ -48,8 +47,8 @@ jobs:
       - name: Create Tables
         run: npm run create:tables:github:actions
         env:
-          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
-          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}   
+          POSTGRES_USER: postgres       
+          POSTGRES_PASSWORD: postgres   
           POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
           POSTGRES_HOST_DOCKER: postgres
           POSTGRES_PORT: 5432
@@ -61,7 +60,7 @@ jobs:
       - name: Run Tests
         run: npm run test:github:actions
         env:
-          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}       
+          POSTGRES_USER: postgres       
           POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}   
           POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}
           POSTGRES_HOST_DOCKER: postgres
