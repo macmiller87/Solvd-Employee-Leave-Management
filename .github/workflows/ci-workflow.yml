@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  container-job:
+  database:
     runs-on: ubuntu-latest
     
     container: node:20.15.0
@@ -21,7 +21,9 @@ jobs:
       postgres:
         image: postgres
         env:     
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres      
+          POSTGRES_PASSWORD: postgres  
+          POSTGRES_DB: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -46,8 +48,8 @@ jobs:
         run: npm run create:tables:github:actions
         env:
           POSTGRES_USER: postgres      
-          POSTGRES_PASSWORD:  postgres  
-          POSTGRES_DB:  postgres
+          POSTGRES_PASSWORD: postgres  
+          POSTGRES_DB: postgres
           POSTGRES_HOST_DOCKER: postgres
           POSTGRES_PORT: 5432
           SERVER_HOST: ${{ vars.SERVER_HOST }}
@@ -59,8 +61,8 @@ jobs:
         run: npm run test:github:actions
         env:
           POSTGRES_USER: postgres     
-          POSTGRES_PASSWORD:  postgres   
-          POSTGRES_DB:  postgres
+          POSTGRES_PASSWORD: postgres   
+          POSTGRES_DB: postgres
           POSTGRES_HOST_DOCKER: postgres
           POSTGRES_PORT: 5432
           SERVER_HOST: ${{ vars.SERVER_HOST }}
