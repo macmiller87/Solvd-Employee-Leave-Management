@@ -19,9 +19,9 @@ jobs:
       postgres:
         image: postgres:13
         env:     
-          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}        
-          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}   
-          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}       
+          POSTGRES_USER: ${{vars.POSTGRES_USER_DOCKER}}        
+          POSTGRES_PASSWORD: ${{vars.POSTGRES_PASSWORD_DOCKER}}   
+          POSTGRES_DB: ${{vars.POSTGRES_DATABASE_DOCKER}}       
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -43,20 +43,20 @@ jobs:
         run: yarn install
     
       - name: Setup database
-        run: PGPASSWORD=${{ vars.POSTGRES_PASSWORD_DOCKER }} psql -h ${{ vars.POSTGRES_HOST_DOCKER }} -U ${{ vars.POSTGRES_USER_DOCKER }} -d ${{ vars.POSTGRES_DATABASE_DOCKER }}  -f ./src/database/docker-tables/tables.sql
+        run: PGPASSWORD=${{vars.POSTGRES_PASSWORD_DOCKER}} psql -h ${{vars.POSTGRES_HOST_DOCKER}} -U ${{vars.POSTGRES_USER_DOCKER}} -d ${{vars.POSTGRES_DATABASE_DOCKER}} -f ./src/database/docker-tables/tables.sql
       
       - name: Run Tests
         run: npm run test:github:actions
         env:
-          POSTGRES_USER_DOCKER: ${{ vars.POSTGRES_USER_DOCKER }}     
-          POSTGRES_PASSWORD_DOCKER: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
-          POSTGRES_DATABASE_DOCKER: ${{ vars.POSTGRES_DATABASE_DOCKER }}
-          POSTGRES_HOST_DOCKER: ${{ vars.POSTGRES_HOST_DOCKER }}
+          POSTGRES_USER_DOCKER: ${{vars.POSTGRES_USER_DOCKER}}     
+          POSTGRES_PASSWORD_DOCKER: ${{vars.POSTGRES_PASSWORD_DOCKER}}  
+          POSTGRES_DATABASE_DOCKER: ${{vars.POSTGRES_DATABASE_DOCKER}}
+          POSTGRES_HOST_DOCKER: ${{vars.POSTGRES_HOST_DOCKER}}
           POSTGRES_PORT: 5432
-          SERVER_HOST: ${{ vars.SERVER_HOST }}
-          SERVER_PORT: ${{ vars.SERVER_PORT }}
-          SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
-          LOCALE: ${{ vars.LOCALE }}
+          SERVER_HOST: ${{vars.SERVER_HOST}}
+          SERVER_PORT: ${{vars.SERVER_PORT}}
+          SECRET_TOKEN: ${{secrets.SECRET_TOKEN}}
+          LOCALE: ${{vars.LOCALE}}
 
 
 
