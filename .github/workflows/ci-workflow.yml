@@ -37,7 +37,7 @@ jobs:
         run: PGPASSWORD=${{ vars.POSTGRES_PASSWORD_LOCAL }} psql -h ${{ vars.POSTGRES_HOST_LOCAL }} -U ${{ vars.POSTGRES_USER_LOCAL }} -d ${{ vars.POSTGRES_DATABASE_LOCAL }} -f ./src/database/docker-tables/tables.sql
 
       - name: Print Database Configs
-        run: echo POSTGRES_USER && POSTGRES_PASSWORD && POSTGRES_DB && POSTGRES_HOST_AUTH_METHOD
+        run: echo ${{ POSTGRES_USER }} && ${{ POSTGRES_PASSWORD }} && ${{ POSTGRES_DB }} && ${{ POSTGRES_HOST_AUTH_METHOD }}
 
   app:
     runs-on: ubuntu-latest  
@@ -57,7 +57,7 @@ jobs:
       - name: Run Tests
         run: yarn test:github:actions
         env:
-          POSTGRES_HOST_LOCAL: ${{ vars.POSTGRES_HOST_LOCAL }}
+          POSTGRES_HOST_LOCAL: 127.0.0.1
           POSTGRES_PORT: 5432 
           POSTGRES_DATABASE_LOCAL: ${{ vars.POSTGRES_DATABASE_LOCAL }}
           POSTGRES_USER_LOCAL: ${{ vars.POSTGRES_USER_LOCAL }}     
