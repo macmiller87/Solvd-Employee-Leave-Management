@@ -36,9 +36,6 @@ jobs:
       - name: Setup Database and Create Tables
         run: PGPASSWORD=${{ vars.POSTGRES_PASSWORD_LOCAL }} psql -h ${{ vars.POSTGRES_HOST_LOCAL }} -U ${{ vars.POSTGRES_USER_LOCAL }} -d ${{ vars.POSTGRES_DATABASE_LOCAL }} -f ./src/database/docker-tables/tables.sql
 
-      - name: Print Database Configs
-        run: echo ${{ POSTGRES_USER }} && ${{ POSTGRES_PASSWORD }} && ${{ POSTGRES_DB }} && ${{ POSTGRES_HOST_AUTH_METHOD }}
-
   app:
     runs-on: ubuntu-latest  
     needs: database
