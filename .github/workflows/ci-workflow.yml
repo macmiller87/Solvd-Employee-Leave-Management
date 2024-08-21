@@ -52,9 +52,7 @@ jobs:
         run: yarn install
 
       - name: Run Tests
-        run: |
-          PGPASSWORD=${{ vars.POSTGRES_PASSWORD_DOCKER }} psql -h ${{ vars.HOST }} -U ${{ vars.POSTGRES_USER_DOCKER }} -d ${{ vars.POSTGRES_DATABASE_DOCKER }}
-          yarn test:github:actions
+        run: yarn test:github:actions
 
 
 
