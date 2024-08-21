@@ -53,13 +53,13 @@ jobs:
         run: yarn install
 
       - name: Run Tests
-        run: yarn test:github:actions
+        run: docker compose up
         env:
           POSTGRES_HOST_LOCAL: ${{ vars.POSTGRES_HOST_LOCAL }}
           POSTGRES_PORT: 5432 
-          POSTGRES_DATABASE_LOCAL: dbpostgressolvdelm
-          POSTGRES_USER_LOCAL: postgres2    
-          POSTGRES_PASSWORD_LOCAL: 2288 
+          POSTGRES_DATABASE_LOCAL: ${{ vars.POSTGRES_DATABASE_LOCAL }}
+          POSTGRES_USER_LOCAL: ${{ vars.POSTGRES_USER_LOCAL }}     
+          POSTGRES_PASSWORD_LOCAL: ${{ vars.POSTGRES_PASSWORD_LOCAL }}  
           SERVER_HOST: ${{ vars.SERVER_HOST }}
           SERVER_PORT: ${{ vars.SERVER_PORT }}
           SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
