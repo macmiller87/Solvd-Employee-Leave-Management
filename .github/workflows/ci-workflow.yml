@@ -18,6 +18,7 @@ jobs:
     
     container: node:20.15.0
     services:
+      user: postgres
       postgres:
         image: postgres
         env:     
