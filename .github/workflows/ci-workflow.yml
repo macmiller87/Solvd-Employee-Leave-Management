@@ -51,6 +51,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
+      - name: Check Database
+        run: psql -h localhost -p 5435 -U postgres
+
       - name: Run Tests
         run: yarn test:github:actions
         env:
