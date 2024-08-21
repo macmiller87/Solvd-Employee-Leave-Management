@@ -52,7 +52,7 @@ jobs:
         run: yarn install
 
       - name: Run Tests
-        run: yarn test:github:actions
+        run: yarn test:github:actions -- --no-cache
         env:
           POSTGRES_HOST_DOCKER: ${{vars.POSTGRES_HOST_DOCKER}}
           POSTGRES_PORT: 5432 
