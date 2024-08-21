@@ -15,9 +15,9 @@ on:
 jobs:
   database:
     runs-on: ubuntu-latest
+    container: node:10.18-jessie
     
     services:
-      user: postgres
       postgres:
         image: postgres
         env:     
