@@ -28,6 +28,7 @@
 - Docker
 - Jest
 - Swagger
+- Github Actions
 
 ### 💻 Tables Diagram
 
