@@ -19,9 +19,9 @@ jobs:
       postgres:
         image: postgres:13
         env:     
-          POSTGRES_USER: ${{vars.POSTGRES_USER_DOCKER}}        
-          POSTGRES_PASSWORD: ${{vars.POSTGRES_PASSWORD_DOCKER}}   
-          POSTGRES_DB: ${{vars.POSTGRES_DATABASE_DOCKER}}       
+          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}        
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}   
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}       
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Database and Create Tables
-        run: PGPASSWORD=${{vars.POSTGRES_PASSWORD_DOCKER}} psql -h ${{vars.HOST}} -U ${{vars.POSTGRES_USER_DOCKER}} -d ${{vars.POSTGRES_DATABASE_DOCKER}} -f ./src/database/docker-tables/tables.sql
+        run: PGPASSWORD=${{ vars.POSTGRES_PASSWORD_DOCKER }} psql -h ${{ vars.HOST }} -U ${{ vars.POSTGRES_USER_DOCKER }} -d ${{ vars.POSTGRES_DATABASE_DOCKER }} -f ./src/database/docker-tables/tables.sql
 
   app:
     runs-on: ubuntu-latest  
@@ -52,17 +52,17 @@ jobs:
         run: yarn install
 
       - name: Run Tests
-        run: yarn test:github:actions -- --no-cache
+        run: yarn test:github:actions
         env:
-          POSTGRES_HOST_DOCKER: ${{vars.POSTGRES_HOST_DOCKER}}
+          POSTGRES_HOST_DOCKER: ${{ vars.HOST }}
           POSTGRES_PORT: 5432 
-          POSTGRES_DATABASE_DOCKER: ${{vars.POSTGRES_DATABASE_DOCKER}}
-          POSTGRES_USER_DOCKER: ${{vars.POSTGRES_USER_DOCKER}}     
-          POSTGRES_PASSWORD_DOCKER: ${{vars.POSTGRES_PASSWORD_DOCKER}}  
-          SERVER_HOST: ${{vars.SERVER_HOST}}
-          SERVER_PORT: ${{vars.SERVER_PORT}}
-          SECRET_TOKEN: ${{secrets.SECRET_TOKEN}}
-          LOCALE: ${{vars.LOCALE}}
+          POSTGRES_DATABASE_DOCKER: ${{ vars.POSTGRES_DATABASE_DOCKER }}
+          POSTGRES_USER_DOCKER: ${{ vars.POSTGRES_USER_DOCKER }}     
+          POSTGRES_PASSWORD_DOCKER: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          SERVER_HOST: ${{ vars.SERVER_HOST }}
+          SERVER_PORT: ${{ vars.SERVER_PORT }}
+          SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          LOCALE: ${{ vars.LOCALE }}
 
 
 
