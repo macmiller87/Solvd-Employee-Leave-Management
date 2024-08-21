@@ -36,6 +36,7 @@ jobs:
       - name: Setup Database and Create Tables
         run: PGPASSWORD=${{ vars.POSTGRES_PASSWORD_LOCAL }} psql -h ${{ vars.POSTGRES_HOST_LOCAL }} -U ${{ vars.POSTGRES_USER_LOCAL }} -d ${{ vars.POSTGRES_DATABASE_LOCAL }} -f ./src/database/docker-tables/tables.sql
 
+
   app:
     runs-on: ubuntu-latest  
     needs: database
@@ -54,11 +55,11 @@ jobs:
       - name: Run Tests
         run: yarn test:github:actions
         env:
-          POSTGRES_HOST_LOCAL: 127.0.0.1
+          POSTGRES_HOST_LOCAL: ${{ vars.POSTGRES_HOST_LOCAL }}
           POSTGRES_PORT: 5432 
-          POSTGRES_DATABASE_LOCAL: ${{ vars.POSTGRES_DATABASE_LOCAL }}
-          POSTGRES_USER_LOCAL: ${{ vars.POSTGRES_USER_LOCAL }}     
-          POSTGRES_PASSWORD_LOCAL: ${{ vars.POSTGRES_PASSWORD_LOCAL }}  
+          POSTGRES_DATABASE_LOCAL: dbpostgressolvdelm
+          POSTGRES_USER_LOCAL: postgres2    
+          POSTGRES_PASSWORD_LOCAL: 2288 
           SERVER_HOST: ${{ vars.SERVER_HOST }}
           SERVER_PORT: ${{ vars.SERVER_PORT }}
           SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
