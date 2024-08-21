@@ -16,7 +16,6 @@ jobs:
   database:
     runs-on: ubuntu-latest
     
-    container: node:20.15.0
     services:
       postgres:
         image: postgres
