@@ -52,7 +52,7 @@ jobs:
         run: yarn install
 
       - name: Preset PostgresSql
-        run: ./src/database/service/postgService.js
+        run: PGPASSWORD=${{vars.POSTGRES_PASSWORD_DOCKER}} psql -h ${{vars.HOST}} -U ${{vars.POSTGRES_USER_DOCKER}} -d ${{vars.POSTGRES_DATABASE_DOCKER}} -f ./src/database/service/postgService.js
         env:
           POSTGRES_HOST_DOCKER: ${{vars.POSTGRES_HOST_DOCKER}}
           POSTGRES_PORT: 5432 
