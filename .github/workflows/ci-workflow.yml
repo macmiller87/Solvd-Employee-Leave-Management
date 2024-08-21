@@ -19,9 +19,9 @@ jobs:
       postgres:
         image: postgres:13
         env:     
-          POSTGRES_USER: ${{ vars.POSTGRES_USER_DOCKER }}        
-          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_DOCKER }}   
-          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_DOCKER }}       
+          POSTGRES_USER: ${{ vars.POSTGRES_USER_LOCAL }}        
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD_LOCAL }}   
+          POSTGRES_DB: ${{ vars.POSTGRES_DATABASE_LOCAL }}       
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Database and Create Tables
-        run: PGPASSWORD=${{ vars.POSTGRES_PASSWORD_DOCKER }} psql -h ${{ vars.HOST }} -U ${{ vars.POSTGRES_USER_DOCKER }} -d ${{ vars.POSTGRES_DATABASE_DOCKER }} -f ./src/database/docker-tables/tables.sql
+        run: PGPASSWORD=${{ vars.POSTGRES_PASSWORD_LOCAL }} psql -h ${{ vars.HOST }} -U ${{ vars.POSTGRES_USER_LOCAL }} -d ${{ vars.POSTGRES_DATABASE_LOCAL }} -f ./src/database/docker-tables/tables.sql
 
   app:
     runs-on: ubuntu-latest  
@@ -56,9 +56,9 @@ jobs:
         env:
           POSTGRES_HOST_LOCAL: ${{ vars.HOST }}
           POSTGRES_PORT: 5432 
-          POSTGRES_DATABASE_LOCAL: ${{ vars.POSTGRES_DATABASE_DOCKER }}
-          POSTGRES_USER_LOCAL: ${{ vars.POSTGRES_USER_DOCKER }}     
-          POSTGRES_PASSWORD_LOCAL: ${{ vars.POSTGRES_PASSWORD_DOCKER }}  
+          POSTGRES_DATABASE_LOCAL: ${{ vars.POSTGRES_DATABASE_LOCAL }}
+          POSTGRES_USER_LOCAL: ${{ vars.POSTGRES_USER_LOCAL }}     
+          POSTGRES_PASSWORD_LOCAL: ${{ vars.POSTGRES_PASSWORD_LOCAL }}  
           SERVER_HOST: ${{ vars.SERVER_HOST }}
           SERVER_PORT: ${{ vars.SERVER_PORT }}
           SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
