@@ -49,7 +49,7 @@ jobs:
           POSTGRES_USER: postgres      
           POSTGRES_PASSWORD: postgres  
           POSTGRES_DB: postgres
-          POSTGRES_HOST_DOCKER: postgres
+          POSTGRES_HOST_DOCKER: database
           POSTGRES_PORT: 5432
           SERVER_HOST: ${{ vars.SERVER_HOST }}
           SERVER_PORT: ${{ vars.SERVER_PORT }}
@@ -62,7 +62,7 @@ jobs:
           POSTGRES_USER: postgres     
           POSTGRES_PASSWORD: postgres   
           POSTGRES_DB: postgres
-          POSTGRES_HOST_DOCKER: postgres
+          POSTGRES_HOST_DOCKER: database
           POSTGRES_PORT: 5432
           SERVER_HOST: ${{ vars.SERVER_HOST }}
           SERVER_PORT: ${{ vars.SERVER_PORT }}
