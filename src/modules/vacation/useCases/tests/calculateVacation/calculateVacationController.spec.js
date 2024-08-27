@@ -193,7 +193,7 @@ describe("Calculate Vacation Controller", () => {
             authorization: `Bearer ${token}`
         });
 
-        const firstCallTocalcVacation = await request(app).post("/calculateVacation").query({
+        await request(app).post("/calculateVacation").query({
             employee_id: employee.body.employee.employee_id
 
         }).set({

@@ -2,7 +2,7 @@ import { authConfig } from "./authConfig.js";
 import { AppError } from "../error/appError.js";
 import crypto from 'node:crypto';
 
-export async function EnsureUserAuthenticate(request, response) {
+export async function EnsureUserAuthenticate(request) {
 
     const authToken = request.headers.authorization.replace(/bearer\s/ig, '');
 

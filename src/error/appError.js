@@ -13,7 +13,7 @@ export class AppError {
     }
 
     set message(message) {
-        return this._message = message;
+        this._message = message;
     }
 
     get statusCode() {
@@ -21,7 +21,7 @@ export class AppError {
     }
 
     set statusCode(statusCode) {
-        return this._statusCode = statusCode;
+        this._statusCode = statusCode;
     }
 
 }

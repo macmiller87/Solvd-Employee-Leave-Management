@@ -168,7 +168,7 @@ describe("Calculate Vacation (Unit Test)", () => {
             token: token
         });
 
-        const firstCallTocalcVacation = await inMemoryVacationRepository.calculateVacation({
+        await inMemoryVacationRepository.calculateVacation({
             employee_id: employee.employee_id,
             token: token
         });
