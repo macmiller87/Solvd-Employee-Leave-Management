@@ -44,6 +44,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
+      - name: Run ESLint
+        run: yarn lint
+
       - name: Run Tests
         run: yarn test:github:actions
         env:
