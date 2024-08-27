@@ -11,9 +11,11 @@
     "dev:debug": "node --inspect --env-file=.env --no-warnings src/server.js",
     "create:tables": "node --env-file=.env --no-warnings src/database/local-tables/createTables.js",
     "test": "node --env-file=.env --no-warnings --experimental-vm-modules $(yarn bin jest) --runInBand --forceExit",
-    "test:github:actions": "node --no-warnings --experimental-vm-modules $(yarn bin jest) --runInBand --forceExit"
+    "test:github:actions": "node --no-warnings --experimental-vm-modules $(yarn bin jest) --runInBand --forceExit",
+    "lint": "npx eslint ."
   },
   "dependencies": {
+    "@babel/core": "^7.11.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
@@ -21,8 +23,12 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.25.1",
     "@babel/plugin-syntax-import-attributes": "^7.24.7",
+    "@eslint/js": "^9.9.1",
     "bcryptjs": "^2.4.3",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
     "jest": "^29.7.0",
     "supertest": "^7.0.0"
   }
