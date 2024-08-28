@@ -27,7 +27,7 @@ export class VacationRepository {
     }
 
     async getVacation(vacation_id) {
-        const find = await postgresSql`SELECT vacation_id, employee_id, employee_name, employee_jobtitle, qtty_paid_vacation, qtty_days_on_vacation, value_to_recieve, time_worked_amount, createdat FROM vacation WHERE vacation_id = ${vacation_id}`;
+        const find = await postgresSql`SELECT vacation_id, employee_id, employee_name, employee_jobtitle, qtty_paid_vacation, qtty_days_on_vacation, value_to_recieve, time_worked_amount, created_at FROM vacation WHERE vacation_id = ${vacation_id}`;
         
         const queryResult = find.count === 1 ? find : false;
         return queryResult;

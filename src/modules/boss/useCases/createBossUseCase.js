@@ -36,7 +36,7 @@ export class CreateBoss {
                 boss: {
                     boss_id: createBoss[0].boss_id,
                     name: createBoss[0].name,
-                    createdAt: createBoss[0].createdat
+                    created_at: createBoss[0].created_at
                 }
             });
         }

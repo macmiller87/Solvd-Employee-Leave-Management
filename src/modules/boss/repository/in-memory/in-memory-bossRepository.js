@@ -44,7 +44,7 @@ export class InMemoryBossRepository  {
             const boss = {
                 boss_id: createBoss[0].boss_id,
                 name: createBoss[0].name,
-                createdAt: createBoss[0].createdAt
+                created_at: createBoss[0].created_at
             }
 
             return boss;
@@ -94,7 +94,7 @@ export class InMemoryBossRepository  {
             const boss = {
                 boss_id: searchBoss[0].boss_id,
                 name: searchBoss[0].name,
-                createdAt: searchBoss[0].createdat
+                created_at: searchBoss[0].created_at
             }
 
             return {
@@ -119,7 +119,7 @@ export class InMemoryBossRepository  {
         const boss = {
             boss_id: searchBoss[0].boss_id,
             name: searchBoss[0].name,
-            createdAt: searchBoss[0].createdat
+            created_at: searchBoss[0].created_at
         }
 
         return boss;

@@ -49,7 +49,7 @@ describe("Search Employee (Unit Test)", () => {
         expect(search.employeeName).toBe("First Employee");
         expect(search.baseSalary).toEqual(2800.55);
         expect(search).toHaveProperty("startDate");
-        expect(search).toHaveProperty("createdAt");
+        expect(search).toHaveProperty("created_at");
     });
 
     it("shouldn't be able to searching a employee, if 'employee_id' parameter isn't correct", async () => {

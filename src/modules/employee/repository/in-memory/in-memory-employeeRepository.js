@@ -63,7 +63,7 @@ export class InmemoryEmployeeRepository {
                     jobTitle: createEmployee[0].jobtitle,
                     baseSalary: createEmployee[0].basesalary,
                     startDate: createEmployee[0].startdate,
-                    createdAt: createEmployee[0].createdAt,
+                    created_at: createEmployee[0].created_at,
                 }
         
                 return employee;
@@ -94,7 +94,7 @@ export class InmemoryEmployeeRepository {
                 jobTitle: getEmployee[0].jobtitle,
                 baseSalary: getEmployee[0].basesalary,
                 startDate: getEmployee[0].startdate,
-                createdAt: getEmployee[0].createdAt,
+                created_at: getEmployee[0].created_at,
             }
 
             return employee;

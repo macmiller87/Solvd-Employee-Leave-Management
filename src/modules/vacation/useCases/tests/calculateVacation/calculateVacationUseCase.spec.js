@@ -53,7 +53,7 @@ describe("Calculate Vacation (Unit Test)", () => {
         expect(calcVacation.jobTitle).toEqual("BackEnd developer");
         expect(calcVacation.baseSalary).toEqual(3100.80);
         expect(calcVacation.startDate).toEqual("7/26/2023");
-        expect(calcVacation).toHaveProperty("createdAt");
+        expect(calcVacation).toHaveProperty("created_at");
         expect(calcVacation.vacation[0]).toHaveProperty("vacation_id");
         expect(calcVacation.vacation[0]).toHaveProperty("employee_id");
         expect(calcVacation.vacation[0].employee_name).toEqual("First Employee");
@@ -62,7 +62,7 @@ describe("Calculate Vacation (Unit Test)", () => {
         expect(calcVacation.vacation[0].qtty_days_on_vacation).toEqual(30);
         expect(calcVacation.vacation[0]).toHaveProperty("value_to_recieve");
         expect(calcVacation.vacation[0]).toHaveProperty("time_worked_amount");
-        expect(calcVacation.vacation[0]).toHaveProperty("createdat");
+        expect(calcVacation.vacation[0]).toHaveProperty("created_at");
     });
 
     it("should be able to send informations trought renponse about employee's vacation, if he have less than one year of work", async () => {
@@ -101,7 +101,7 @@ describe("Calculate Vacation (Unit Test)", () => {
         expect(calcVacation.employee.jobTitle).toEqual("BackEnd developer");
         expect(calcVacation.employee.baseSalary).toEqual(3100.80);
         expect(calcVacation.employee.startDate).toEqual("1/26/2024");
-        expect(calcVacation.employee).toHaveProperty("createdAt");
+        expect(calcVacation.employee).toHaveProperty("created_at");
         expect(calcVacation.vacation.qttyPaidVacation).toEqual(0);
         expect(calcVacation.vacation.qttyDaysOnVacation).toEqual(0);
         expect(calcVacation.vacation.valueToRecieve).toEqual(0);

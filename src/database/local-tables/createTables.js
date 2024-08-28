@@ -8,7 +8,7 @@ const createTables = async () => {
             "boss_id" TEXT NOT NULL PRIMARY KEY,
             "name" TEXT NOT NULL UNIQUE,
             "password" TEXT NOT NULL,
-            "createdat" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+            "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
         );
 
     `.then(() => console.log("boss table  was created !"));
@@ -19,7 +19,7 @@ const createTables = async () => {
             "boss_id" TEXT NOT NULL,
             "token_id" TEXT NOT NULL PRIMARY KEY,
             "token" TEXT NOT NULL,
-            "createdat" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
             CONSTRAINT "bosstoken_boss_id_fkey" FOREIGN KEY("boss_id") REFERENCES "boss"("boss_id") ON DELETE CASCADE ON UPDATE CASCADE
         );
@@ -35,7 +35,7 @@ const createTables = async () => {
             "jobtitle" TEXT NOT NULL,
             "basesalary" REAL NOT NULL,
             "startdate" TEXT NOT NULL,
-            "createdat" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
             CONSTRAINT "employee_boss_id_fkey" FOREIGN KEY("boss_id") REFERENCES "boss"("boss_id") ON DELETE CASCADE ON UPDATE CASCADE
         );
@@ -53,7 +53,7 @@ const createTables = async () => {
             "qtty_days_on_vacation" INT NOT NULL,
             "value_to_recieve" REAL NOT NULL,
             "time_worked_amount" TEXT NOT NULL,
-            "createdat" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
             CONSTRAINT "vacation_employee_id_fkey" FOREIGN KEY("employee_id") REFERENCES "employee"("employee_id") ON DELETE CASCADE ON UPDATE CASCADE
         );

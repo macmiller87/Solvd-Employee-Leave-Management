@@ -50,7 +50,7 @@
                                         "name": {
                                             "type": "string"
                                         },
-                                        "createdat": {
+                                        "created_at": {
                                             "type": "string"
                                         }
                                     }
@@ -59,7 +59,7 @@
                                     "boss": {
                                         "boss_id": "11264226-ebc8-4148-9f24-b0a1769c17b9",
 		                                "name": "Boss name",
-		                                "createdAt": "2024-06-21T21:57:20.862Z"
+		                                "created_at": "2024-06-21T21:57:20.862Z"
                                     }
                                 }
                             }
@@ -129,7 +129,7 @@
                                         "name": {
                                             "type": "string"
                                         },
-                                        "createdat": {
+                                        "created_at": {
                                             "type": "string"
                                         },
                                         "token": {
@@ -141,7 +141,7 @@
                                     "boss": {
                                         "boss_id": "11264226-ebc8-4148-9f24-b0a1769c17b9",
 		                                "name": "Boss name",
-		                                "createdAt": "2024-06-21T21:57:20.862Z"
+		                                "created_at": "2024-06-21T21:57:20.862Z"
                                     },
                                     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOiI3NTk3YmExZC02ODliLTQyOTMtYTc2ZS00NmU2ODRiMGQyZWMiLCJ1c2VybmFtZSI6IlNldSBNYWRydWdhIiwidXNlckF2YXRhciI6Ik1hZHJ1Z3VpyZWMiLCJ1c2VybmFtZSI6IlNldSBNYWRydWdhIiwidXNlckF2YXRhciI6Ik1hZHJ1Z3VpyZWMiLCJ1c2VybmFtZSI6IlNldSBNYWRydWdhIiwidXNlckF2YXRhciI6Ik1hZHJ1Z3VpyZWMiLCJ1c2VybmFtZSI6IlNldSBNYWRy"
                                 }
@@ -192,7 +192,7 @@
                                         "name": {
                                             "type": "string"
                                         },
-                                        "createdat": {
+                                        "created_at": {
                                             "type": "string"
                                             }
                                     }
@@ -201,7 +201,7 @@
                                     "boss": {
                                         "boss_id": "11264226-ebc8-4148-9f24-b0a1769c17b9",
 		                                "name": "Boss name",
-		                                "createdAt": "2024-06-21T21:57:20.862Z"
+		                                "created_at": "2024-06-21T21:57:20.862Z"
                                     }
                                 }
                             }
@@ -314,7 +314,7 @@
                                         "startDate": {
                                             "type": "string"
                                         },
-                                        "createdat": {
+                                        "created_at": {
                                             "type": "string"
                                         }
                                     }
@@ -327,7 +327,7 @@
 		                                "jobTitle": "Employee jobTitle",
 		                                "baseSalary": 100.00,
 		                                "startDate": "Employee startDate",
-		                                "createdAt": "2024-06-25T18:15:11.022Z"
+		                                "created_at": "2024-06-25T18:15:11.022Z"
 	                                }
                                 }
                             }
@@ -392,7 +392,7 @@
                                         "startDate": {
                                             "type": "string"
                                         },
-                                        "createdat": {
+                                        "created_at": {
                                             "type": "string"
                                         }
                                     }
@@ -405,7 +405,7 @@
 		                                "jobTitle": "Employee jobTitle",
 		                                "baseSalary": 100.00,
 		                                "startDate": "Employee startDate",
-		                                "createdAt": "2024-06-25T18:15:11.022Z"
+		                                "created_at": "2024-06-25T18:15:11.022Z"
 	                                }
                                 }
                             }
@@ -496,7 +496,7 @@
                                         "startDate": {
                                             "type": "string"
                                         },
-                                        "createdat": {
+                                        "created_at": {
                                             "type": "string"
                                         },
                                         "vacation": {
@@ -523,7 +523,7 @@
 		                                "jobTitle": "Employee jobTitle",
 		                                "baseSalary": 100.00,
 		                                "startDate": "Employee startDate",
-		                                "createdAt": "2024-06-25T18:15:11.022Z",
+		                                "created_at": "2024-06-25T18:15:11.022Z",
                                         "vacation": [
                                             {
 					                            "qtty_paid_vacation": 0,
@@ -561,7 +561,7 @@
                                         "startDate": {
                                             "type": "string"
                                         },
-                                        "createdat": {
+                                        "created_at": {
                                             "type": "string"
                                         },
                                         "vacation": {
@@ -589,7 +589,7 @@
                                             "time_worked_amount": {
                                                 "type": "string"
                                             },
-                                            "createdat": {
+                                            "created_at": {
                                                 "type": "string"
                                             }
                                         }
@@ -603,7 +603,7 @@
 		                                "jobTitle": "Employee jobTitle",
 		                                "baseSalary": 100.00,
 		                                "startDate": "Employee startDate",
-		                                "createdAt": "2024-06-25T18:15:11.022Z",
+		                                "created_at": "2024-06-25T18:15:11.022Z",
                                         "vacation": [
                                             {
                                                 "vacation_id": "42650385-1635-4948-998a-cdd9fe019088",
@@ -614,7 +614,7 @@
 					                            "qtty_days_on_vacation": 0,
 					                            "value_to_recieve": 0,
 					                            "time_worked_amount": "Time calculated based on today's date ... Working time: ? months, ? days, and ? years ..",
-					                            "createdat": "2024-06-25T18:16:44.499Z"
+					                            "created_at": "2024-06-25T18:16:44.499Z"
                                             }
                                         ]
 	                                }
@@ -681,7 +681,7 @@
                                         "time_worked_amount": {
                                             "type": "string"
                                         },
-                                        "createdat": {
+                                        "created_at": {
                                             "type": "string"
                                         }
                                     }
@@ -697,7 +697,7 @@
                                             "qtty_days_on_vacation": 0,
                                             "value_to_recieve": 0,
                                             "time_worked_amount": "Working time: ? months, ? days, and ? years ..",
-                                            "createdat": "2024-06-25T18:16:44.499Z"
+                                            "created_at": "2024-06-25T18:16:44.499Z"
                                         }
                                     ]
                                 }

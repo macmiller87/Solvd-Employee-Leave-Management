@@ -55,7 +55,7 @@ describe("Calculate Vacation Controller", () => {
         expect(calcVacation.body.employee.jobTitle).toEqual("BackEnd developer");
         expect(calcVacation.body.employee.baseSalary).toEqual(3100.80);
         expect(calcVacation.body.employee.startDate).toEqual("7/26/2023");
-        expect(calcVacation.body.employee).toHaveProperty("createdAt");
+        expect(calcVacation.body.employee).toHaveProperty("created_at");
         expect(calcVacation.body.employee.vacation[0]).toHaveProperty("vacation_id");
         expect(calcVacation.body.employee.vacation[0]).toHaveProperty("employee_id");
         expect(calcVacation.body.employee.vacation[0].employee_name).toEqual("First Employee");
@@ -64,7 +64,7 @@ describe("Calculate Vacation Controller", () => {
         expect(calcVacation.body.employee.vacation[0].qtty_days_on_vacation).toEqual(30);
         expect(calcVacation.body.employee.vacation[0]).toHaveProperty("value_to_recieve");
         expect(calcVacation.body.employee.vacation[0]).toHaveProperty("time_worked_amount");
-        expect(calcVacation.body.employee.vacation[0]).toHaveProperty("createdat");
+        expect(calcVacation.body.employee.vacation[0]).toHaveProperty("created_at");
         expect(calcVacation.status).toBe(201);
     });
 
@@ -112,7 +112,7 @@ describe("Calculate Vacation Controller", () => {
         expect(calcVacation.body.employee.jobTitle).toEqual("BackEnd developer");
         expect(calcVacation.body.employee.baseSalary).toEqual(3100.80);
         expect(calcVacation.body.employee.startDate).toEqual("1/26/2024");
-        expect(calcVacation.body.employee).toHaveProperty("createdAt");
+        expect(calcVacation.body.employee).toHaveProperty("created_at");
         expect(calcVacation.body.vacation.qttyPaidVacation).toEqual(0);
         expect(calcVacation.body.vacation.qttyDaysOnVacation).toEqual(0);
         expect(calcVacation.body.vacation.valueToRecieve).toEqual(0);

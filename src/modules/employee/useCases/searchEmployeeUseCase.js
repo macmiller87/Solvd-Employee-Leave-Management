@@ -30,7 +30,7 @@ export class SearchEmployee {
                     jobTitle: getEmployee[0].jobtitle,
                     baseSalary: getEmployee[0].basesalary,
                     startDate: getEmployee[0].startdate,
-                    createdAt: getEmployee[0].createdat,
+                    created_at: getEmployee[0].created_at,
                 }
             });
             

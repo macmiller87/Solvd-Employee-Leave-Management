@@ -53,7 +53,7 @@ describe("Search Employee Controller", () => {
         expect(search.body.employee.employeeName).toBe("First Employee");
         expect(search.body.employee.baseSalary).toEqual(2800.55);
         expect(search.body.employee).toHaveProperty("startDate");
-        expect(search.body.employee).toHaveProperty("createdAt");
+        expect(search.body.employee).toHaveProperty("created_at");
         expect(search.status).toBe(200);
     });
 

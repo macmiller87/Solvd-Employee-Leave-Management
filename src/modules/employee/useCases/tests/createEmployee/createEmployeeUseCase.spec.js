@@ -43,7 +43,7 @@ describe("Create Employee (Unit Test)", () => {
         expect(employee).toHaveProperty("employee_id");
         expect(employee.employeeName).toBe("First Employee");
         expect(employee.baseSalary).toEqual(2800.55);
-        expect(employee).toHaveProperty("createdAt");
+        expect(employee).toHaveProperty("created_at");
     });
 
     it("shouldn't be able to create a employee, if the type of the parameters isn't a string", async () => {

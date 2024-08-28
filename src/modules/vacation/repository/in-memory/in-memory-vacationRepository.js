@@ -89,7 +89,7 @@ export class InMemoryVacationRepository {
                     jobTitle: searchEmployee[0].jobtitle,
                     baseSalary: searchEmployee[0].basesalary,
                     startDate: searchEmployee[0].startdate,
-                    createdAt: searchEmployee[0].createdat,
+                    created_at: searchEmployee[0].created_at,
                     vacation: createVacation
                 }
 
@@ -115,7 +115,7 @@ export class InMemoryVacationRepository {
                         jobTitle: searchEmployee[0].jobtitle,
                         baseSalary: searchEmployee[0].basesalary,
                         startDate: searchEmployee[0].startdate,
-                        createdAt: searchEmployee[0].createdat,
+                        created_at: searchEmployee[0].created_at,
                     },
                     vacation: {
                         qttyPaidVacation: qttyVacationStandardPaid,

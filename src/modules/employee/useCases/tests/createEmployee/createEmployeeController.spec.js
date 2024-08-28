@@ -45,7 +45,7 @@ describe("Create Employee Controller", () => {
         expect(employee.body.employee).toHaveProperty("employee_id");
         expect(employee.body.employee.employeeName).toBe("First Employee");
         expect(employee.body.employee.baseSalary).toEqual(2800.55);
-        expect(employee.body.employee).toHaveProperty("createdAt");
+        expect(employee.body.employee).toHaveProperty("created_at");
         expect(employee.status).toBe(201);
     });
 

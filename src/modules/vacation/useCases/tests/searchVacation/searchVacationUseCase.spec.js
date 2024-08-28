@@ -60,7 +60,7 @@ describe("Search Vacation (Unit Test)", () => {
         expect(search[0].qtty_days_on_vacation).toEqual(30);
         expect(search[0]).toHaveProperty("value_to_recieve");
         expect(search[0]).toHaveProperty("time_worked_amount");
-        expect(search[0]).toHaveProperty("createdat");
+        expect(search[0]).toHaveProperty("created_at");
     });
 
     it("shouldn't be able to searching an employee's vacation, if 'vacation_id' parameter aren't correct", async () => {

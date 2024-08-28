@@ -57,14 +57,14 @@ export class EmployeeRepository  {
     }
 
     async findAllEmployeeInformationsById(employee_id) {
-        const find = await postgresSql`SELECT boss_id, employee_id, employeename, jobtitle, basesalary, startdate, createdat FROM employee WHERE employee_id = ${employee_id}`;
+        const find = await postgresSql`SELECT boss_id, employee_id, employeename, jobtitle, basesalary, startdate, created_at FROM employee WHERE employee_id = ${employee_id}`;
         
         const queryResult = find.count === 1 ? find : false;
         return queryResult;
     }
 
     async getEmployee(employee_id) {
-        const find = await postgresSql`SELECT boss_id, employee_id, employeename, jobtitle, basesalary, startdate, createdat FROM employee WHERE employee_id = ${employee_id}`;
+        const find = await postgresSql`SELECT boss_id, employee_id, employeename, jobtitle, basesalary, startdate, created_at FROM employee WHERE employee_id = ${employee_id}`;
         
         const queryResult = find.count === 1 ? find : false;
         return queryResult;

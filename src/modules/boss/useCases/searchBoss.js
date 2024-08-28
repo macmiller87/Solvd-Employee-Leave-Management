@@ -21,7 +21,7 @@ export class SearchBoss {
             boss: {
                 boss_id: searchBoss[0].boss_id,
                 name: searchBoss[0].name,
-                createdAt: searchBoss[0].createdat
+                created_at: searchBoss[0].created_at
             }
         });
 
