@@ -172,7 +172,7 @@
 ### 🚀 How to running Tests of this application Localy
 
 - After following the steps `How to running this application Localy`.
-- Type on terminal `npm run test`, or `yarn run test`, deppends on your package manager installed.
+- Type on terminal `npm run test`, or `yarn test`, deppends on your package manager installed.
 
 ### 🚀 How to running the `swagger` Documentation of this application
 
